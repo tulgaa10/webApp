@@ -1,0 +1,649 @@
+/* ============================================
+   CUSTOM PROPERTIES (CSS Variables)
+   ============================================ */
+   :root {
+    /* Өнгөний схемүүд / Color schemes */
+    --color-primary: #4169e1;
+    --color-secondary: #ff9900; 
+    --color-accent: #00ffff;
+    --color-text: #ffffff;
+    --color-heading: #88c8ff;
+    --color-background: #0a0a2a;
+    --color-card: rgba(30, 30, 70, 0.7);
+    --color-header: rgba(10, 10, 42, 0.8);
+    --color-footer: rgba(10, 10, 30, 0.9);
+    
+    /* Фонт тохиргоо / Typography settings */
+    --font-main: 'Roboto', 'Arial', sans-serif;
+    --font-headings: 'Montserrat', 'Arial', sans-serif;
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --line-height-normal: 1.5;
+    --letter-spacing-normal: 0.05em;
+    --letter-spacing-wide: 0.1em;
+    
+    /* Зай, хэмжээ / Spacing and sizing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 5rem;
+    
+    /* Радиус, сүүдэр / Border radius and shadows */
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 20px;
+    --border-radius-circle: 50%;
+    
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 255, 0.3);
+    
+    /* Шилжилт / Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Гардиент / Gradients */
+    --gradient-primary: linear-gradient(135deg, #4169e1, #9370db);
+    --gradient-header: linear-gradient(180deg, rgba(10, 10, 42, 0.95), rgba(10, 10, 42, 0.8));
+    --gradient-card: linear-gradient(135deg, rgba(30, 30, 70, 0.8), rgba(20, 20, 50, 0.6));
+    
+    /* Контейнер хэмжээ / Container sizes */
+    --container-max-width: 1200px;
+    --container-padding: var(--spacing-md);
+  }
+  
+  /* Гэрэлтэй горим / Light mode */
+  [data-theme="light"] {
+    --color-primary: #3257c7;
+    --color-secondary: #e07800; 
+    --color-accent: #008b8b;
+    --color-text: #333333;
+    --color-heading: #1a365d;
+    --color-background: #f5f8ff;
+    --color-card: rgba(255, 255, 255, 0.8);
+    --color-header: rgba(245, 248, 255, 0.9);
+    --color-footer: rgba(230, 240, 255, 0.95);
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(30, 30, 150, 0.2);
+    --gradient-primary: linear-gradient(135deg, #3257c7, #6a5acd);
+    --gradient-header: linear-gradient(180deg, rgba(245, 248, 255, 0.95), rgba(240, 245, 255, 0.8));
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 255, 0.8));
+  }
+  
+  /* ============================================
+     МОНГОЛ ВЕБ ФОНТ ТАТАЖ ИМПОРТЛОХ / IMPORT MONGOLIAN WEB FONTS
+     ============================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+  
+  /* ============================================
+     ҮНДСЭН СТИЛЬ / BASE STYLES
+     ============================================ */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-size: 16px; /* rem нэгжийн суурь утга / Base value for rem units */
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headings);
+    color: var(--color-heading);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+    letter-spacing: var(--letter-spacing-normal);
+  }
+  
+  h1 {
+    font-size: var(--font-size-xxl);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  h2 {
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: var(--spacing-md);
+  }
+  
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: var(--border-radius-sm);
+  }
+  
+  h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  p {
+    margin-bottom: var(--spacing-md);
+    text-align: justify; /* Монгол текстийн тугаламжийг сайжруулах / Improve Mongolian text justification */
+    word-spacing: 0.1em; /* Үг хоорондын зай / Word spacing */
+  }
+  
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--color-secondary);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+  }
+  
+  /* ============================================
+     ТОЛГОЙ ХЭСЭГ / HEADER STYLES
+     ============================================ */
+  header {
+    background: var(--gradient-header);
+    padding: var(--spacing-lg) var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+    transition: background var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  
+  header h1 {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  header h1 img {
+    height: 3rem;
+    transform-origin: center;
+    animation: pulse 5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+  
+  nav li a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    transition: color var(--transition-normal), transform var(--transition-normal);
+    display: inline-block;
+    position: relative;
+  }
+  
+  nav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--gradient-primary);
+    transition: width var(--transition-normal);
+    border-radius: var(--border-radius-sm);
+  }
+  
+  nav li a:hover {
+    color: var(--color-secondary);
+    transform: translateY(-2px);
+  }
+  
+  nav li a:hover::after {
+    width: 100%;
+  }
+  
+  .search-form {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .search-form input {
+    padding: var(--spacing-sm);
+    width: 250px;
+    border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+    border: none;
+    outline: none;
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+  }
+  
+  .search-form button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    transition: opacity var(--transition-normal);
+  }
+  
+  .search-form button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Гэрэл/харанхуй горим / Theme toggle */
+  .theme-toggle {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-size: var(--font-size-lg);
+  }
+  
+  /* ============================================
+   NAVIGATION WITH SEARCH STYLES
+   ============================================ */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.search-form {
+    margin: 0;
+}
+
+/* Responsive for the new layout */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .search-form {
+        margin-top: var(--spacing-md);
+    }
+}
+  /* ============================================
+     ГАЛЛЕРЕЙ ХЭСЭГ / GALLERY SECTION STYLES
+     ============================================ */
+  .galaxy-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/galaxy-bg.jpg') no-repeat center center;
+    background-size: cover;
+    padding: var(--spacing-xxl) 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .galaxy-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 15s infinite;
+  }
+  
+  .galaxy-background h2 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.8);
+    animation: glow 3s infinite alternate;
+  }
+  
+  @keyframes glow {
+    from { text-shadow: 0 0 5px rgba(0, 150, 255, 0.5); }
+    to { text-shadow: 0 0 20px rgba(0, 150, 255, 0.8), 0 0 30px rgba(0, 100, 255, 0.6); }
+  }
+  
+  .galaxy-background p {
+    font-size: var(--font-size-lg);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* ============================================
+     ХЭСГҮҮД / SECTION STYLES
+     ============================================ */
+  section {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  section h2 {
+    text-align: center;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+  }
+  
+  article {
+    background: var(--gradient-card);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    box-shadow: var(--shadow-md);
+  }
+  
+  article:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  article img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  article h3 {
+    padding: var(--spacing-md);
+    margin: 0;
+    text-align: center;
+    color: var(--color-heading);
+  }
+  
+  article p {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+  }
+  
+  /* ============================================
+     ВИДЕО ХЭСЭГ / VIDEO SECTION STYLES
+     ============================================ */
+  .video-section {
+    background-color: var(--color-background);
+    padding: var(--spacing-xxl) var(--spacing-md);
+    position: relative;
+  }
+  
+  .video-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+  }
+  
+  .video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+  }
+  
+  .video-container video {
+    width: 100%;
+    display: block;
+    border-radius: var(--border-radius-md);
+  }
+  
+  /* ============================================
+     АУДИО ХЭСЭГ / AUDIO SECTION STYLES
+     ============================================ */
+  .audio-player {
+    background: var(--gradient-card);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    max-width: 500px;
+    margin: var(--spacing-xl) auto;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  
+  .audio-player:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .audio-title {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-heading);
+    font-size: var(--font-size-lg);
+  }
+  
+  .audio-player audio {
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  
+  /* ============================================
+     ХӨЛНИЙ ХЭСЭГ / FOOTER STYLES
+     ============================================ */
+  footer {
+    background-color: var(--color-footer);
+    padding: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  footer p {
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+  }
+  
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+  
+  .social-links a {
+    color: var(--color-accent);
+    font-size: var(--font-size-xl);
+    transition: color var(--transition-normal), transform var(--transition-normal);
+  }
+  
+  .social-links a:hover {
+    color: var(--color-secondary);
+    transform: translateY(-3px);
+  }
+  
+  /* ============================================
+     RESPONSIVE ДИЗАЙН / MEDIA QUERIES
+     ============================================ */
+  
+  /* Гар утасны босоо / Mobile portrait */
+  @media (max-width: 576px) {
+    :root {
+      --font-size-base: 0.875rem;
+      --font-size-lg: 1rem;
+      --font-size-xl: 1.25rem;
+      --font-size-xxl: 1.5rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+    }
+    
+    header h1 {
+      font-size: 1.5rem;
+    }
+    
+    header h1 img {
+      height: 2rem;
+    }
+    
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .search-form input {
+      width: 180px;
+    }
+    
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .galaxy-background {
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .galaxy-background h2 {
+      font-size: 1.5rem;
+    }
+    
+    .theme-toggle {
+      top: var(--spacing-sm);
+      right: var(--spacing-sm);
+    }
+  }
+  
+  /* Гар утасны хэвтээ / Mobile landscape */
+  @media (min-width: 577px) and (max-width: 768px) {
+    :root {
+      --font-size-base: 0.9375rem;
+      --font-size-lg: 1.0625rem;
+      --font-size-xl: 1.375rem;
+      --font-size-xxl: 1.75rem;
+    }
+    
+    nav ul {
+      gap: var(--spacing-md);
+      justify-content: space-around;
+    }
+    
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Компьютерийн дэлгэц / Desktop */
+  @media (min-width: 769px) {
+    .grid-container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    nav ul {
+      justify-content: center;
+    }
+  }
+  
+  /* Large desktop */
+  @media (min-width: 1200px) {
+    :root {
+      --font-size-base: 1.0625rem;
+      --font-size-lg: 1.25rem;
+      --font-size-xl: 1.625rem;
+      --font-size-xxl: 2.25rem;
+    }
+    
+    .container {
+      max-width: 1400px;
+    }
+  }
+  
+  /* Print styles */
+  @media print {
+    body {
+      background: white;
+      color: black;
+      font-size: 12pt;
+    }
+    
+    header, footer, .theme-toggle, .search-form, video, audio {
+      display: none;
+    }
+    
+    .grid-container {
+      display: block;
+    }
+    
+    article {
+      page-break-inside: avoid;
+      margin-bottom: 20pt;
+    }
+  }
