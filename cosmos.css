@@ -1,8 +1,6 @@
-/* ============================================
-   CUSTOM PROPERTIES (CSS Variables)
-   ============================================ */
+
    :root {
-    /* Өнгөний схемүүд / Color schemes */
+    /* Color schemes */
     --color-primary: #4169e1;
     --color-secondary: #ff9900; 
     --color-accent: #00ffff;
@@ -13,7 +11,7 @@
     --color-header: rgba(10, 10, 42, 0.8);
     --color-footer: rgba(10, 10, 30, 0.9);
     
-    /* Фонт тохиргоо / Typography settings */
+    /* Фонт settings */
     --font-main: 'Roboto', 'Arial', sans-serif;
     --font-headings: 'Montserrat', 'Arial', sans-serif;
     --font-size-base: 1rem;
@@ -27,7 +25,7 @@
     --letter-spacing-normal: 0.05em;
     --letter-spacing-wide: 0.1em;
     
-    /* Зай, хэмжээ / Spacing and sizing */
+    /* Spacing and sizing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
@@ -35,7 +33,7 @@
     --spacing-xl: 3rem;
     --spacing-xxl: 5rem;
     
-    /* Радиус, сүүдэр / Border radius and shadows */
+    /* Border radius and shadows */
     --border-radius-sm: 5px;
     --border-radius-md: 10px;
     --border-radius-lg: 20px;
@@ -45,17 +43,17 @@
     --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 25px rgba(0, 0, 255, 0.3);
     
-    /* Шилжилт / Transitions */
+    /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
     
-    /* Гардиент / Gradients */
+    /*  Gradients */
     --gradient-primary: linear-gradient(135deg, #4169e1, #9370db);
     --gradient-header: linear-gradient(180deg, rgba(10, 10, 42, 0.95), rgba(10, 10, 42, 0.8));
     --gradient-card: linear-gradient(135deg, rgba(30, 30, 70, 0.8), rgba(20, 20, 50, 0.6));
     
-    /* Контейнер хэмжээ / Container sizes */
+    /* Container sizes */
     --container-max-width: 1200px;
     --container-padding: var(--spacing-md);
   }
@@ -79,15 +77,11 @@
     --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 255, 0.8));
   }
   
-  /* ============================================
-     МОНГОЛ ВЕБ ФОНТ ТАТАЖ ИМПОРТЛОХ / IMPORT MONGOLIAN WEB FONTS
-     ============================================ */
+  /*  МОНГОЛ ВЕБ ФОНТ ТАТАЖ ИМПОРТЛОХ  */
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
   
-  /* ============================================
-     ҮНДСЭН СТИЛЬ / BASE STYLES
-     ============================================ */
+  /*  ҮНДСЭН СТИЛЬ / BASE STYLES */
   * {
     margin: 0;
     padding: 0;
@@ -147,8 +141,8 @@
   
   p {
     margin-bottom: var(--spacing-md);
-    text-align: justify; /* Монгол текстийн тугаламжийг сайжруулах / Improve Mongolian text justification */
-    word-spacing: 0.1em; /* Үг хоорондын зай / Word spacing */
+    text-align: justify; 
+    word-spacing: 0.1em; 
   }
   
   a {
@@ -173,9 +167,7 @@
     padding: 0 var(--container-padding);
   }
   
-  /* ============================================
-     ТОЛГОЙ ХЭСЭГ / HEADER STYLES
-     ============================================ */
+  /* ТОЛГОЙ ХЭСЭГ / HEADER STYLES */
   header {
     background: var(--gradient-header);
     padding: var(--spacing-lg) var(--spacing-md);
@@ -291,7 +283,7 @@
     opacity: 0.9;
   }
   
-  /* Гэрэл/харанхуй горим / Theme toggle */
+  /* Гэрэл/харанхуй горим*/
   .theme-toggle {
     position: absolute;
     top: var(--spacing-md);
@@ -303,9 +295,7 @@
     font-size: var(--font-size-lg);
   }
   
-  /* ============================================
-   NAVIGATION WITH SEARCH STYLES
-   ============================================ */
+  /* NAVIGATION SEARCH STYLES */
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -328,7 +318,6 @@ nav ul {
     margin: 0;
 }
 
-/* Responsive for the new layout */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -339,9 +328,7 @@ nav ul {
         margin-top: var(--spacing-md);
     }
 }
-  /* ============================================
-     ГАЛЛЕРЕЙ ХЭСЭГ / GALLERY SECTION STYLES
-     ============================================ */
+  /* GALLERY SECTION STYLES*/
   .galaxy-background {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/galaxy-bg.jpg') no-repeat center center;
     background-size: cover;
@@ -381,9 +368,7 @@ nav ul {
     margin: 0 auto;
   }
   
-  /* ============================================
-     ХЭСГҮҮД / SECTION STYLES
-     ============================================ */
+  /* SECTION STYLES */
   section {
     padding: var(--spacing-xl) var(--spacing-md);
   }
@@ -435,9 +420,7 @@ nav ul {
     line-height: var(--line-height-normal);
   }
   
-  /* ============================================
-     ВИДЕО ХЭСЭГ / VIDEO SECTION STYLES
-     ============================================ */
+  /* VIDEO SECTION STYLES */
   .video-section {
     background-color: var(--color-background);
     padding: var(--spacing-xxl) var(--spacing-md);
@@ -468,9 +451,7 @@ nav ul {
     border-radius: var(--border-radius-md);
   }
   
-  /* ============================================
-     АУДИО ХЭСЭГ / AUDIO SECTION STYLES
-     ============================================ */
+  /* AUDIO SECTION STYLES*/
   .audio-player {
     background: var(--gradient-card);
     padding: var(--spacing-lg);
@@ -499,9 +480,7 @@ nav ul {
   }
 
   
-  /* ============================================
-     ХӨЛНИЙ ХЭСЭГ / FOOTER STYLES
-     ============================================ */
+  /* FOOTER STYLES */
   footer {
     background-color: var(--color-footer);
     padding: var(--spacing-lg);
@@ -531,11 +510,9 @@ nav ul {
     transform: translateY(-3px);
   }
   
-  /* ============================================
-     RESPONSIVE ДИЗАЙН / MEDIA QUERIES
-     ============================================ */
+  /* MEDIA QUERIES */
   
-  /* Гар утасны босоо / Mobile portrait */
+  /*  Mobile portrait */
   @media (max-width: 576px) {
     :root {
       --font-size-base: 0.875rem;
@@ -582,7 +559,7 @@ nav ul {
     }
   }
   
-  /* Гар утасны хэвтээ / Mobile landscape */
+  /* Mobile landscape */
   @media (min-width: 577px) and (max-width: 768px) {
     :root {
       --font-size-base: 0.9375rem;
@@ -601,7 +578,7 @@ nav ul {
     }
   }
   
-  /* Компьютерийн дэлгэц / Desktop */
+  /* Desktop */
   @media (min-width: 769px) {
     .grid-container {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
