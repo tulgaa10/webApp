@@ -62,9 +62,9 @@
   --color-primary: rgb(30, 80, 255);        
   --color-secondary: rgb(255, 153, 0);     
   --color-accent: rgb(4, 9, 53);     
-  --color-text: rgb(20, 19, 19);           
+  --color-text: rgb(255, 255, 255);           
   --color-heading: rgba(255, 255, 255, 0.5);       
-  --color-background: rgba(255, 255, 255, 0.8);    
+  --color-background: rgba(255, 255, 255, 0.5);    
   --color-card: rgba(255, 255, 255, 0.5);        
   --color-header: rgba(255, 255, 255, 0.1);       
   --color-footer: rgba(255, 255, 255, 0.1);       
