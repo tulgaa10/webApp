@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="mn" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проксима Центавр b - Cosmos</title>
+    <link rel="stylesheet" href="cosmos.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="images/logo.png" alt="Cosmos Logo">
+            Проксима Центавр b
+        </h1>
+        <nav>
+            <div class="nav-container">
+                <ul>
+                    <li><a href="index.html#entertainment">Энтертейнмент</a></li>
+                    <li><a href="index.html#exoplanets">Экзогаригууд</a></li>
+                    <li><a href="index.html#galaxy">Галактик судлал</a></li>
+                    <li><a href="index.html#media">Медиа</a></li>
+                </ul>
+                <div class="search-form">
+                    <form>
+                        <input type="text" placeholder="Хайх утгаа оруулна уу...">
+                        <button type="submit">Хайх</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="galaxy-background">
+            <h2>Проксима Центавр b</h2>
+            <p>Бидний нарны системд хамгийн ойр байрлах экзогариг</p>
+        </div>
+
+        <section>
+            <h2>Товч мэдээлэл</h2>
+            <div class="grid-container">
+                <article>
+                    <img src="exoplanets/proxima-centauri-b/proxima-b-details.jpg" alt="Proxima Centauri b artist impression">
+                    <h3>Урлагын дүрслэл</h3>
+                    <p>Проксима Центавр b гаригийн урлагын дүрслэл. Энэ гариг Дэлхийгээс 1.3 дахин том бөгөөд амьдрах боломжтой бүсэд оршдог.</p>
+                </article>
+                <article>
+                    <img src="exoplanets/proxima-centauri-b/proxima-system.jpg" alt="Proxima Centauri system">
+                    <h3>Проксима Центавр систем</h3>
+                    <p>Проксима Центавр бол Альфа Центавраар алдартай гурван одны системийн нэг хэсэг юм.</p>
+                </article>
+                <article>
+                    <img src="exoplanets/proxima-centauri-b/red-dwarf.jpg" alt="Red dwarf star">
+                    <h3>Улаан одой од</h3>
+                    <p>Проксима Центавр нь улаан одой од бөгөөд нарнаас хамаагүй жижиг, хүйтэн од юм.</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <h2>Дэлгэрэнгүй мэдээлэл</h2>
+            <article style="grid-column: 1 / -1;">
+                <h3>Проксима Центавр b гаригийн шинж чанар</h3>
+                <p>Проксима Центавр b нь 2016 онд нээгдсэн экзогариг бөгөөд зөвхөн 4.24 гэрлийн жилийн зайд байрладаг. Энэ нь одоогоор бидэнд хамгийн ойрхон байгаа экзогариг юм.</p>
+                <p>Гаригийн гол онцлогууд:</p>
+                <ul>
+                    <li>Дэлхийгээс 1.3 дахин том масстай</li>
+                    <li>Одны эргэн тойронд 11.2 хоногт нэг эргэлддэг</li>
+                    <li>Одтойгоо маш ойрхон (0.05 AU) байрладаг</li>
+                    <li>Амьдрах боломжтой бүсэд байрладаг</li>
+                    <li>Гадаргын температур -40°C-аас +30°C хооронд хэлбэлздэг</li>
+                </ul>
+                <p>Проксима Центавр b нь маш ойрхон байрладаг тул ирээдүйд хүмүүс очиж судлах боломжтой анхны экзогариг байж болох юм.</p>
+            </article>
+        </section>
+
+        <section class="video-section">
+            <h2>Проксима Центавр b тухай видео</h2>
+            <div class="video-container">
+                <a href="https://www.youtube.com/watch?v=Fg0NX1NW4oQ" target="_blank" class="video-link">
+                    <img src="exoplanets/proxima-centauri-b/proxima-video.jpg">
+                    <div class="play-button"></div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Космос судлал. Бүх эрх хуулиар хамгаалагдсан.</p>
+        <p>Холбоо барих: <a href="mailto:tulgaatuki2@gmail.com">tulgaatuki2@gmail.com</a> <a href="tel:+97688146801">88146801</a></p>
+    </footer>
+    
+    <script>
+        function setDarkLightmode() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+        
+        setDarkLightmode();
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            document.documentElement.setAttribute('data-theme', event.matches ? 'dark' : 'light');
+        });
+    </script>
+    </body>
+</html>
