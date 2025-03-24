@@ -614,7 +614,7 @@ opacity: 0.8;
 /*  Mobile portrait */
 @media (max-width: 576px) {
   :root {
-    --font-size-base: 0.5rem;
+    --font-size-base: 0.6rem;
     --font-size-lg: 0.7rem;
     --font-size-xl: 1rem;
     --font-size-xxl: 1.2rem;
