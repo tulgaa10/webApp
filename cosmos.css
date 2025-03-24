@@ -614,30 +614,30 @@ opacity: 0.8;
 /*  Mobile portrait */
 @media (max-width: 576px) {
   :root {
-    --font-size-base: 0.875rem;
-    --font-size-lg: 1rem;
-    --font-size-xl: 1.25rem;
-    --font-size-xxl: 1.5rem;
-    --spacing-lg: 1.5rem;
-    --spacing-xl: 2rem;
+    --font-size-base: 0.5rem;
+    --font-size-lg: 0.7rem;
+    --font-size-xl: 1rem;
+    --font-size-xxl: 1.2rem;
+    --spacing-lg: 1rem;
+    --spacing-xl: 1.5rem;
   }
   
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   
   header h1 img {
-    height: 2rem;
+    height: 1.5rem;
   }
   
   nav ul {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: var(--spacing-sm);
   }
   
   .search-form input {
-    width: 180px;
+    width: 150px;
   }
   
   .grid-container {
@@ -649,7 +649,7 @@ opacity: 0.8;
   }
   
   .galaxy-background h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   
   .theme-toggle {
@@ -661,10 +661,10 @@ opacity: 0.8;
 /* Mobile landscape */
 @media (min-width: 577px) and (max-width: 768px) {
   :root {
-    --font-size-base: 0.9375rem;
-    --font-size-lg: 1.0625rem;
-    --font-size-xl: 1.375rem;
-    --font-size-xxl: 1.75rem;
+    --font-size-base: 0.5rem;
+    --font-size-lg: 0.7rem;
+    --font-size-xl: 1rem;
+    --font-size-xxl: 1.2rem;
   }
   
   nav ul {
