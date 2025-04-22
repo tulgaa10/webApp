@@ -1,0 +1,6 @@
+[
+    { "label": "Бүгд", "value": "all" },
+    { "label": "Амьдрах боломжтой", "value": "habitable" },
+    { "label": "Хамгийн ойрхон", "value": "close" },
+    { "label": "Супер дэлхий", "value": "super-earth" }
+  ]

@@ -1,0 +1,30 @@
+[
+    {
+      "id": "kepler-22b",
+      "name": "Кеплер-22b",
+      "type": "habitable",
+      "image": "images/Kepler-22_b.jpg",
+      "description": "Нарны системтэй төстэй одны амьдрах боломжтой бүсийн анхны баталгаажсан гариг."
+    },
+    {
+      "id": "proxima-centauri-b",
+      "name": "Проксима Центавр b",
+      "type": "close",
+      "image": "images/Centaur_b.jpg",
+      "description": "Бидний нарны системд хамгийн ойр байрлах экзогариг."
+    },
+    {
+      "id": "trappist-1e",
+      "name": "TRAPPIST-1e",
+      "type": "habitable",
+      "image": "images/TRAPPIST-1e.jpg",
+      "description": "TRAPPIST-1 системийн долоон дэлхийн хэмжээтэй гаригуудын нэг."
+    },
+    {
+      "id": "gliese-581g",
+      "name": "Глизе 581g",
+      "type": "super-earth",
+      "image": "images/Gliese_581_g.jpg",
+      "description": "Глизе 581 системд амьдрах боломжтой супер-Дэлхий гариг."
+    }
+  ]

@@ -8,7 +8,6 @@
 </head>
 <body>
     <header>
-  
         <h1>
             <img src="images/logo.png" alt="Cosmos Logo">
             Сансрын ертөнцийг судлая
@@ -29,118 +28,16 @@
                 </div>
             </div>
         </nav>
+        <button id="themeToggle" class="theme-toggle">🌞 / 🌙</button>
     </header>
-    <div class="container">
-        <div class="galaxy-background">
-            <h2>Орчлон ертөнцийн гайхамшгийг нээцгээе</h2>
-        </div>
 
-        <section id="entertainment">
-            <h2>Энтертейнмент</h2>
-            <div class="grid-container">
-                <article>
-                    <a href="https://www.youtube.com/watch?v=zSWdZVtXT7E" target="_blank" class="video-link">
-                        <img src="images/space-movie.jpg" alt="Space Movie">
-                        <div class="play-button"></div>
-                    </a>
-                    <h3>Шилдэг сансрын киноны жагсаалт</h3>
-                    <p>Хамгийн шинжлэх ухааны үнэн зөв сансрын кино.</p>
-                </article>
-                <article>
-                    <a href="https://www.youtube.com/watch?v=udFxKZRyQt4" target="_blank" class="video-link">
-                        <img src="images/neutron-star.jpg" alt="Space Books">
-                        <div class="play-button"></div>
-                    </a>
-                    <h3>Нейтрон од гэж юу вэ?</h3>
-                    <p>Нейтрон од гэж юу болох манай нарнаас юугаараа ялгаатай талаар олж мэдээрэй.</p>
-                </article>
-                <article>
-                    <a href="https://www.youtube.com/watch?v=QqsLTNkzvaY" target="_blank" class="video-link">
-                        <img src="images/blackholefall.jpg" alt="Space Games">
-                        <div class="play-button"></div>
-                    </a>
-                    <h3>Хэрэв та хар нүхэнд унавал яах вэ?</h3>
-                    <p>Хар нүх бол орчлон ертөнцийн хамгийн хүчирхэг зүйл бөгөөд тэд үнэхээр хачирхалтай, төвөгтэй юм. Хэрэв та нэг дотор унавал юу болох вэ?.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="exoplanets">
-            <h2>Экзогаригууд</h2>
-            <div class="grid-container">
-                <article>
-                    <a href="kepler-22b.html">  
-                        <img src="images/Kepler-22_b.jpg" alt="Exoplanet 1">
-                        <h3>Кеплер-22b</h3>
-                        <p>Нарны системтэй төстэй одны амьдрах боломжтой бүсийн анхны баталгаажсан гариг.</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="proxima-centauri-b.html">
-                        <img src="images/Centaur_b.jpg" alt="Exoplanet 2">
-                        <h3>Проксима Центавр b</h3>
-                        <p>Бидний нарны системд хамгийн ойр байрлах экзогариг.</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="trappist-1e.html">
-                        <img src="images/TRAPPIST-1e.jpg" alt="Exoplanet 3">
-                        <h3>TRAPPIST-1e</h3>
-                        <p>TRAPPIST-1 системийн долоон дэлхийн хэмжээтэй гаригуудын нэг.</p>
-                    </a>
-                </article>
-                <article>
-                    <a href="gliese-581g.html">
-                        <img src="images/Gliese_581_g.jpg" alt="Exoplanet 4">
-                        <h3>Глизе 581g</h3>
-                        <p>Глизе 581 системд амьдрах боломжтой супер-Дэлхий гариг.</p>
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <section id="galaxy" class="video-section">
-            <h2>Галактик судлал</h2>
-            <div class="video-container">
-                <video style="width: 100%;" controls poster="images/galaxy-poster.jpg">
-                    <source src="videos/galaxy-tour.mp4" type="video/mp4">
-                    <source src="videos/galaxy-tour.webm" type="video/webm">
-                    Таны вэб хөтөч видео тоглуулах боломжгүй байна.
-                </video>
-            </div>
-            <p style="text-align: center; margin-top: 20px;">Манай Сүүн Зам галактик болон бусад галактикуудаар виртуал аялал хийгээрэй.</p>
-        </section>
-
-        <section id="media">
-            <h2>Сансрын дуу чимээ</h2>
-            <div class="audio-player">
-                <h3 class="audio-title">Бархасбадь гаригийн дуу чимээ</h3>
-                <audio controls>
-                    <source src="audio/cosmic-background.mp3" type="audio/mpeg">
-                    <source src="audio/cosmic-background.ogg" type="audio/ogg">
-                    Таны вэб хөтөч аудио тоглуулах боломжгүй байна.
-                </audio>
-                <p style="text-align: center; margin-top: 10px;">Бархасбадь гаригаас ирсэн цахилгаан соронзон долгионыг сонсогдохуйц дууны хэлбэрт хөрвүүлсэн..</p>
-            </div>
-        </section>
-    </div>
+    <main id="app"></main>
 
     <footer>
         <p>&copy; 2025 Космос судлал. Бүх эрх хуулиар хамгаалагдсан.</p>
         <p>Холбоо барих: <a href="mailto:tulgaatuki2@gmail.com">tulgaatuki2@gmail.com</a> <a href="tel:+97688146801">88146801</a></p>
     </footer>
-    
-    <script>
-        function setDarkLightmode() {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-        }
-        
-        setDarkLightmode();
-        
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            document.documentElement.setAttribute('data-theme', event.matches ? 'dark' : 'light');
-        });
-    </script>
-    </body>
-    </html>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

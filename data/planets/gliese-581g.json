@@ -1,0 +1,17 @@
+{
+    "id": "kepler-22b",
+    "name": "Кеплер-22b",
+    "type": "habitable",
+    "image": "images/Kepler-22_b.jpg",
+    "description": "Нарны системтэй төстэй одны амьдрах боломжтой бүсийн анхны баталгаажсан гариг.",
+    "fullDescription": "Кеплер-22b нь 2011 онд НАСА-гийн Кеплер сансрын дурангаар нээгдсэн экзогариг юм. Энэ гариг нь манай нарнаас 600 гэрлийн жилийн зайд Кеплер-22 одны эргэн тойронд эргэлддэг.",
+    "physicalProperties": {
+      "mass": 2.4,
+      "radius": 2.4,
+      "temperature": 22,
+      "gravity": 1.2
+    },
+    "discoveryYear": 2011,
+    "distanceFromEarth": "600 light years",
+    "starType": "Yellow Dwarf"
+  }
