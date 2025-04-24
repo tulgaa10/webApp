@@ -1,0 +1,17 @@
+{
+  "id": "trappist-1e",
+  "name": "TRAPPIST-1e",
+  "type": "habitable",
+  "image": "images/TRAPPIST-1e.jpg",
+  "description": "TRAPPIST-1 системийн долоон дэлхийн хэмжээтэй гаригуудын нэг.",
+  "fullDescription": "TRAPPIST-1e нь 2017 онд нээгдсэн экзогариг юм. Энэ гариг нь манай Дэлхийтэй төстэй хэмжээтэй бөгөөд TRAPPIST-1 системийн долоон гаригийн нэг. Амьдрах боломжтой бүсэд оршдог тул шинжлэх ухааны ихээхэн анхаарлыг татсан гариг юм.",
+  "physicalProperties": {
+    "mass": 0.772,
+    "radius": 0.91,
+    "temperature": 251,
+    "gravity": 0.93
+  },
+  "discoveryYear": 2017,
+  "distanceFromEarth": "39.6 light years",
+  "starType": "Ultra-cool Dwarf"
+}
