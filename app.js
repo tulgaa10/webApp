@@ -41,4 +41,3 @@ function initTheme() {
    const appRoot = document.createElement('app-root');
    document.getElementById('app').appendChild(appRoot);
  });
- });
