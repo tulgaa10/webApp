@@ -3,6 +3,7 @@ import './pages/components/planet-card.js';
  import './pages/components/profile-summary.js';
  import './pages/components/planet-stats.js'; 
  import './pages/components/planet-stats.js';
+import './pages/components/exoplanet-explorer.js';
  import './pages/home-page.js';
  import './pages/kepler-page.js';
  import './pages/proxima-page.js';
