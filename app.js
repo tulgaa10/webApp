@@ -9,7 +9,7 @@ import './pages/trappist-page.js';
 import './pages/gliese-page.js';
 import './app-router.js';
 import './app-root.js';
-import planets from './data/planets.json' assert { type: 'json' };
+import planets from './data/planets.json';
 
 function renderPlanets(planetsList) {
   const app = document.getElementById('app');
