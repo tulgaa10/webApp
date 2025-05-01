@@ -1,54 +1,84 @@
 class ProximaPage extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = `
-        <div class="galaxy-background">
-          <h2>Проксима Центавр b</h2>
-          <p>Бидний нарны системд хамгийн ойр байрлах экзогариг</p>
-        </div>
-        <section>
-          <h2>Товч мэдээлэл</h2>
-          <div class="grid-container">
-            <article>
-              <img src="exoplanets/proxima-centauri-b/proxima-b-details.jpg" alt="Proxima Centauri b artist impression">
-              <h3>Урлагын дүрслэл</h3>
-              <p>Проксима Центавр b гаригийн урлагын дүрслэл. Энэ гариг Дэлхийгээс 1.3 дахин том бөгөөд амьдрах боломжтой бүсэд оршдог.</p>
-            </article>
-            <article>
-              <img src="exoplanets/proxima-centauri-b/proxima-system.jpg" alt="Proxima Centauri system">
-              <h3>Проксима Центавр систем</h3>
-              <p>Проксима Центавр бол Альфа Центавраар алдартай гурван одны системийн нэг хэсэг юм.</p>
-            </article>
-            <article>
-              <img src="exoplanets/proxima-centauri-b/red-dwarf.jpg" alt="Red dwarf star">
-              <h3>Улаан одой од</h3>
-              <p>Проксима Центавр нь улаан одой од бөгөөд нарнаас хамаагүй жижиг, хүйтэн од юм.</p>
-            </article>
+  connectedCallback() {
+    // Initial loading state
+    this.innerHTML = `<div>Проксима Центавр b-ийн мэдээллийг ачааллаж байна...</div>`;
+
+    // Path to the JSON file
+    const jsonPath = './data/planets/proxima-centauri-b.json';
+    console.log('Ачааллаж буй зам:', jsonPath);
+
+    // Fetch JSON data
+    fetch(jsonPath)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP алдаа! Статус: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Татсан мэдээлэл:', data);
+        // Render the content with fetched data
+        this.innerHTML = `
+          <div class="galaxy-background">
+            <h2>${data.name}</h2>
+            <p>${data.description}</p>
           </div>
-        </section>
-        <section>
-          <h2>Дэлгэрэнгүй мэдээлэл</h2>
-          <article style="grid-column: 1 / -1;">
-            <h3>Проксима Центавр b гаригийн шинж чанар</h3>
-            <p>Проксима Центавр b нь 2016 онд нээгдсэн экзогариг бөгөөд зөвхөн 4.24 гэрлийн жилийн зайд байрладаг. Энэ нь одоогоор бидэнд хамгийн ойрхон байгаа экзогариг юм.</p>
-            <ul>
-              <li>Дэлхийгээс 1.3 дахин том масстай</li>
-              <li>Одны эргэн тойронд 11.2 хоногт нэг эргэлддэг</li>
-              <li>Одтойгоо маш ойрхон (0.05 AU) байрладаг</li>
-              <li>Амьдрах боломжтой бүсэд байрладаг</li>
-              <li>Гадаргын температур -40°C-аас +30°C хооронд хэлбэлздэг</li>
-            </ul>
-          </article>
-        </section>
-        <section class="video-section">
-          <h2>Проксима Центавр b тухай видео</h2>
-          <div class="video-container">
-            <a href="https://www.youtube.com/watch?v=Fg0NX1NW4oQ" target="_blank" class="video-link">
-              <img src="exoplanets/proxima-centauri-b/proxima-video.jpg">
-              <div class="play-button"></div>
-            </a>
-          </div>
-        </section>
-      `;
-    }
+          <section>
+            <h2>Товч мэдээлэл</h2>
+            <div class="grid-container">
+              <article>
+                <img src="exoplanets/proxima-centauri-b/proxima-b-details.jpg" alt="Proxima Centauri b artist impression">
+                <h3>Урлагын дүрслэл</h3>
+                <p>Проксима Центавр b гаригийн урлагын дүрслэл. Энэ гариг Дэлхийгээс ${data.physicalProperties.mass} дахин их масстай бөгөөд амьдрах боломжтой бүсэд оршдог.</p>
+              </article>
+              <article>
+                <img src="exoplanets/proxima-centauri-b/proxima-system.jpg" alt="Proxima Centauri system">
+                <h3>Проксима Центавр систем</h3>
+                <p>Проксима Центавр бол ${data.starType} төрлийн од бөгөөд Альфа Центавраар алдартай гурван одны системийн нэг хэсэг юм.</p>
+              </article>
+              <article>
+                <img src="exoplanets/proxima-centauri-b/red-dwarf.jpg" alt="Red dwarf star">
+                <h3>Улаан одой од</h3>
+                <p>Проксима Центавр нь улаан одой од бөгөөд нарнаас хамаагүй жижиг, хүйтэн од юм.</p>
+              </article>
+            </div>
+          </section>
+          <section>
+            <h2>Дэлгэрэнгүй мэдээлэл</h2>
+            <article style="grid-column: 1 / -1;">
+              <h3>${data.name} гаригийн шинж чанар</h3>
+              <p>${data.fullDescription} Энэ гариг Дэлхийгээс ${data.distanceFromEarth} зайд байрладаг.</p>
+              <ul>
+                <li>Дэлхийгээс ${data.physicalProperties.mass} дахин их масстай</li>
+                <li>Одны эргэн тойронд ${data.orbitalPeriod} хоногт нэг эргэлддэг</li>
+                <li>Одтойгоо ${data.orbitalDistance} AU зайд байрладаг</li>
+                <li>Амьдрах боломжтой бүсэд байрладаг</li>
+                <li>Гадаргын температур: ${data.physicalProperties.temperature}</li>
+                <li>Нээгдсэн он: ${data.discoveryYear}</li>
+                <li>Одын төрөл: ${data.starType}</li>
+              </ul>
+            </article>
+          </section>
+          <section class="video-section">
+            <h2>${data.name} тухай видео</h2>
+            <div class="video-container">
+              <a href="https://www.youtube.com/watch?v=Fg0NX1NW4oQ" target="_blank" class="video-link">
+                <img src="exoplanets/proxima-centauri-b/proxima-video.jpg" alt="Proxima Centauri b video">
+                <div class="play-button"></div>
+              </a>
+            </div>
+          </section>
+        `;
+      })
+      .catch((error) => {
+        console.error('Проксима Центавр b мэдээллийг ачааллахад алдаа гарлаа:', error);
+        this.innerHTML = `<div>Проксима Центавр b мэдээллийг ачааллахад алдаа гарлаа. Дэлгэрэнгүй: ${error.message}</div>`;
+      });
   }
-  customElements.define('proxima-page', ProximaPage);
+}
+
+// Define the custom element
+customElements.define('proxima-page', ProximaPage);
+
+// Export the class
+export default ProximaPage;
