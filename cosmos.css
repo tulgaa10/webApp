@@ -1,131 +1,192 @@
-/* Web font imports */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700;900&display=swap');
 
 :root {
-  /* Enhanced color schemes with improved contrast */
+  /* COSMIC COLOR PALETTE - Enhanced with proper space theme */
+  --color-space-black: #050618;
+  --color-deep-space: #0a0a2a;
+  --color-nebula-blue: #0b31a0;
+  --color-nova-orange: #ff6d00;
+  --color-star-white: #ffffff;
+  --color-cosmic-dust: rgba(255, 255, 255, 0.05);
+  --color-stellar-blue: rgba(132, 195, 250, 0.9);
+  --color-comet-trail: rgba(0, 255, 255, 0.7);
   --color-primary: #0b31a0;
-  --color-secondary: #ff9900;
-  --color-accent: #00ffff;
-  --color-text: #ffffff;
-  --color-heading: rgba(132, 195, 250, 0.9);
-  --color-background: rgba(10, 10, 42, 0.95);
-  --color-card: rgba(30, 30, 70, 0.8);
-  --color-header: rgba(6, 6, 61, 0.9);
-  --color-footer: rgba(10, 10, 30, 0.95);
+  --color-secondary: #ff6d00;
   
-  /* Improved font settings with fallbacks */
-  --font-main: 'Orbitron', 'Roboto', sans-serif;
-  --font-headings: 'Saira', 'Montserrat', sans-serif;
-  --font-size-base: clamp(0.875rem, 1vw, 1rem);
-  --font-size-sm: clamp(0.75rem, 0.875vw, 0.875rem);
-  --font-size-lg: clamp(1rem, 1.125vw, 1.125rem);
-  --font-size-xl: clamp(1.25rem, 1.5vw, 1.5rem);
-  --font-size-xxl: clamp(1.75rem, 2vw, 2rem);
+  /* Enhanced cosmic themed gradients */
+  --gradient-nebula: linear-gradient(135deg, 
+      rgba(11, 49, 160, 0.8), 
+      rgba(76, 0, 159, 0.6), 
+      rgba(25, 3, 50, 0.9));
+  --gradient-starfield: linear-gradient(to bottom, 
+      rgba(5, 6, 24, 0.95), 
+      rgba(10, 10, 42, 0.95));
+  --gradient-cosmic-card: linear-gradient(135deg, 
+      rgba(30, 30, 70, 0.8), 
+      rgba(11, 49, 160, 0.4));
+  --gradient-warp-drive: linear-gradient(135deg, 
+      #4169e1, #7b68ee, #4169e1);
+  --gradient-cosmic-header: linear-gradient(180deg, 
+      rgba(5, 6, 24, 0.95), 
+      rgba(10, 10, 42, 0.85));
+  --gradient-primary: var(--gradient-nebula);
+  --gradient-card: var(--gradient-cosmic-card);
+      
+  /* COMPONENT COLORS - Enhanced for cosmic theme */
+  --color-text: var(--color-star-white);
+  --color-heading: var(--color-stellar-blue);
+  --color-background: var(--color-space-black);
+  --color-card: rgba(30, 30, 70, 0.6);
+  --color-header: var(--color-deep-space);
+  --color-footer: rgba(5, 6, 24, 0.95);
+  --color-accent: var(--color-comet-trail);
+  --color-link: var(--color-comet-trail);
+  --color-button: var(--color-nebula-blue);
+  --color-button-hover: var(--color-nova-orange);
+  
+  /* TYPOGRAPHY - Space-themed typographic scale using the golden ratio (1.618) */
+  --font-main: 'Exo 2', 'Montserrat', sans-serif;
+  --font-headings: 'Orbitron', 'Saira', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 1.75rem;    /* 28px */
+  --font-size-3xl: 2rem;       /* 32px */
+  --font-size-4xl: 2.5rem;     /* 40px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 4rem;       /* 64px */
+  --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --line-height-tight: 1.2;
   --line-height-normal: 1.5;
-  --letter-spacing-normal: 0.05em;
-  --letter-spacing-wide: 0.1em;
+  --line-height-relaxed: 1.75;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.25em;
   
-  /* Responsive spacing using clamp */
-  --spacing-xs: clamp(0.25rem, 0.25vw, 0.5rem);
-  --spacing-sm: clamp(0.5rem, 0.5vw, 0.75rem);
-  --spacing-md: clamp(0.75rem, 1vw, 1rem);
-  --spacing-lg: clamp(1rem, 2vw, 2rem);
-  --spacing-xl: clamp(2rem, 3vw, 3rem);
-  --spacing-xxl: clamp(3rem, 5vw, 5rem);
+  /* SPACING - Improved cosmic-themed spacing using 8-point grid system */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 2.5rem;   /* 40px */
+  --space-8: 3rem;     /* 48px */
+  --space-9: 4rem;     /* 64px */
+  --space-10: 5rem;    /* 80px */
+  --space-11: 6rem;    /* 96px */
+  --space-12: 8rem;    /* 128px */
   
-  /* Border radius and shadows */
-  --border-radius-sm: 5px;
-  --border-radius-md: 10px;
-  --border-radius-lg: 20px;
-  --border-radius-circle: 50%;
+  /* Add spacing variables used in media queries */
+  --spacing-sm: var(--space-2);
+  --spacing-md: var(--space-4);
+  --spacing-lg: var(--space-6);
+  --spacing-xl: var(--space-8);
+  --spacing-xxl: var(--space-10);
   
-  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 255, 0.3);
-  --shadow-glow: 0 0 15px rgba(0, 255, 255, 0.5);
+  /* BORDERS AND RADII - More cosmic-shaped elements */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
+  --radius-full: 9999px;
   
-  /* Transitions */
+  /* Add border radius variables used in other elements */
+  --border-radius-sm: var(--radius-sm);
+  --border-radius-md: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
+  --border-radius-circle: var(--radius-full);
+  
+  /* SHADOWS - Enhanced cosmic glow effects */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-cosmic-glow: 0 0 15px rgba(0, 255, 255, 0.5);
+  --shadow-star-glow: 0 0 20px rgba(255, 255, 255, 0.5);
+  --shadow-nebula-glow: 0 0 25px rgba(76, 0, 159, 0.6);
+  --shadow-glow: var(--shadow-cosmic-glow);
+  
+  /* ANIMATIONS - More cosmic-themed animations */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
   
-  /* Enhanced gradients */
-  --gradient-primary: linear-gradient(135deg, rgba(65, 105, 225, 0.8), rgba(147, 112, 219, 0.6));
-  --gradient-header: linear-gradient(180deg, rgba(10, 10, 42, 0.9), rgba(10, 10, 42, 0.8));
-  --gradient-card: linear-gradient(135deg, rgba(30, 30, 70, 0.8), rgba(20, 20, 50, 0.6));
-  --gradient-button: linear-gradient(135deg, #4169e1, #7b68ee);
-  --gradient-hover: linear-gradient(135deg, #7b68ee, #4169e1);
-  
-  /* Container sizes */
+  /* CONTAINERS - Optimized for cosmic layout */
   --container-max-width: 1200px;
-  --container-padding: var(--spacing-md);
+  --container-padding: var(--space-4);
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  
+  /* Z-INDEX SCALE - For proper cosmic layering */
+  --z-below: -1;
+  --z-base: 0;
+  --z-above: 1;
+  --z-floating: 10;
+  --z-modal: 100;
+  --z-cosmic: 1000;
 }
 
-/* Light mode - Improved visibility */
+/* LIGHT MODE - "Daytime Space" Theme */
 [data-theme="light"] {
-  --color-primary: #1e50ff;
-  --color-secondary: #ff9900;
-  --color-accent: #040935;
-  --color-text: #040935;
-  --color-heading: rgba(4, 9, 53, 0.9);
-  --color-background: rgba(240, 245, 255, 0.8);
+  --color-space-black: #e6f0ff;
+  --color-deep-space: #c1d9ff;
+  --color-nebula-blue: #3454d1;
+  --color-nova-orange: #ff6d00;
+  --color-star-white: #050618;
+  --color-cosmic-dust: rgba(11, 49, 160, 0.1);
+  --color-stellar-blue: rgba(11, 49, 160, 0.9);
+  --color-comet-trail: rgba(0, 124, 240, 0.7);
+  
+  --gradient-nebula: linear-gradient(135deg, 
+      rgba(52, 84, 209, 0.8), 
+      rgba(120, 99, 255, 0.6), 
+      rgba(52, 84, 209, 0.4));
+  --gradient-starfield: linear-gradient(to bottom, 
+      rgba(240, 245, 255, 0.95), 
+      rgba(220, 235, 255, 0.9));
+  --gradient-cosmic-card: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9), 
+      rgba(193, 217, 255, 0.7));
+  --gradient-warp-drive: linear-gradient(135deg, 
+      #3454d1, #6e8de9, #3454d1);
+  --gradient-cosmic-header: linear-gradient(180deg, 
+      rgba(240, 245, 255, 0.95), 
+      rgba(220, 235, 255, 0.85));
+  
+  --color-text: var(--color-star-white);
+  --color-heading: var(--color-stellar-blue);
+  --color-background: var(--color-space-black);
   --color-card: rgba(255, 255, 255, 0.8);
-  --color-header: rgba(240, 245, 255, 0.9);
-  --color-footer: rgba(240, 245, 255, 0.9);
+  --color-header: var(--color-deep-space);
+  --color-footer: rgba(240, 245, 255, 0.95);
+  --color-accent: var(--color-nebula-blue);
+  --color-link: var(--color-nebula-blue);
   
-  --shadow-sm: 0 2px 8px rgba(0, 41, 255, 0.15);
-  --shadow-md: 0 5px 15px rgba(0, 67, 255, 0.2);
-  --shadow-lg: 0 10px 25px rgba(30, 30, 150, 0.25);
-  --shadow-glow: 0 0 15px rgba(30, 80, 255, 0.5);
-  
-  --gradient-primary: linear-gradient(135deg, #1e50ff, #7b68ee);
-  --gradient-header: linear-gradient(180deg, rgba(240, 245, 255, 0.9), rgba(225, 235, 255, 0.8));
-  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 255, 0.8));
-  --gradient-button: linear-gradient(135deg, #1e50ff, #4169e1);
-  --gradient-hover: linear-gradient(135deg, #4169e1, #1e50ff);
+  --shadow-cosmic-glow: 0 0 15px rgba(0, 124, 240, 0.5);
+  --shadow-star-glow: 0 0 20px rgba(52, 84, 209, 0.5);
+  --shadow-nebula-glow: 0 0 25px rgba(120, 99, 255, 0.6);
 }
 
-/* Fix light mode text visibility */
-[data-theme="light"] p, 
-[data-theme="light"] h1, 
-[data-theme="light"] h4, 
-[data-theme="light"] h5, 
-[data-theme="light"] h6 {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  color: var(--color-primary);
-}
+/* =========== BASE STYLES =========== */
 
-[data-theme="light"] h2,
-[data-theme="light"] h3 {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  color: var(--color-secondary);
-}
-
-[data-theme="light"] article p {
-  color: var(--color-text);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-[data-theme="light"] article {
-  background: linear-gradient(135deg, rgba(240, 245, 255, 0.8), rgba(225, 235, 255, 0.7));
-  box-shadow: var(--shadow-md);
-}
-
-[data-theme="light"] a {
-  color: var(--color-primary);
-  text-shadow: none;
-}
-
-
-
-/* Base styles */
 * {
   margin: 0;
   padding: 0;
@@ -137,6 +198,153 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--color-accent) var(--color-background);
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background: var(--gradient-starfield), 
+              url('images/galaxy-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  transition: color var(--transition-normal), background var(--transition-normal);
+  overflow-x: hidden;
+  padding-top: var(--space-4); /* Create initial breathing room */
+}
+
+/* =========== TYPOGRAPHY =========== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  color: var(--color-heading);
+  margin-bottom: var(--space-5);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: var(--font-weight-bold);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  letter-spacing: var(--letter-spacing-wider);
+  text-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: var(--space-4);
+  text-shadow: 0 0 8px rgba(0, 150, 255, 0.4);
+  margin-bottom: var(--space-8);
+}
+
+/* Add cosmic decoration to h2 */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background: var(--gradient-nebula);
+  border-radius: var(--radius-sm);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  text-shadow: 0 0 6px rgba(0, 150, 255, 0.3);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+}
+
+h6 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin-bottom: var(--space-5);
+  line-height: var(--line-height-relaxed);
+  max-width: 70ch; /* Optimal reading width */
+}
+
+/* =========== LINKS & BUTTONS =========== */
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+  position: relative;
+}
+
+a:hover {
+  color: var(--color-nova-orange);
+  text-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+/* Enhanced cosmic link underline effect */
+a:not(nav a):not(.social-links a):after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--gradient-nebula);
+  transition: width var(--transition-normal);
+}
+
+a:not(nav a):not(.social-links a):hover:after {
+  width: 100%;
+}
+
+button, .button {
+  cursor: pointer;
+  font-family: var(--font-headings);
+  background: var(--gradient-warp-drive);
+  color: white;
+  border: none;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  text-align: center;
+  display: inline-block;
+  box-shadow: var(--shadow-md);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+}
+
+button:hover, .button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), var(--shadow-cosmic-glow);
+  background-size: 150% 150%;
+}
+
+button:active, .button:active {
+  transform: translateY(1px);
+}
+
+/* =========== LAYOUT CONTAINERS =========== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -151,159 +359,39 @@ html {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-accent);
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: var(--color-nova-orange);
 }
 
-body {
-  font-family: var(--font-main);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
-  color: var(--color-text);
-  background: linear-gradient(rgba(10, 10, 42, 0.85), rgba(10, 10, 42, 0.85)), 
-              url('images/galaxy-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  transition: color var(--transition-normal), background var(--transition-normal);
-  overflow-x: hidden;
-}
+/* =========== HEADER =========== */
 
-[data-theme="light"] body {
-  background: linear-gradient(rgba(240, 245, 255, 0.7), rgba(240, 245, 255, 0.7)),
-              url('images/galaxy-bg.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headings);
-  color: var(--color-heading);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.2;
-  letter-spacing: var(--letter-spacing-normal);
-}
-
-h1 {
-  font-size: var(--font-size-xxl);
-  letter-spacing: var(--letter-spacing-wide);
-  text-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
-}
-
-h2 {
-  font-size: var(--font-size-xl);
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: var(--spacing-md);
-  text-shadow: 0 0 8px rgba(0, 150, 255, 0.4);
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5rem;
-  height: 3px;
-  background: var(--gradient-primary);
-  border-radius: var(--border-radius-sm);
-}
-
-h3 {
-  font-size: var(--font-size-lg);
-  text-shadow: 0 0 6px rgba(0, 150, 255, 0.3);
-}
-
-p {
-  margin-bottom: var(--spacing-md);
-  text-align: justify;
-  word-spacing: 0.1em;
-}
-
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-fast), text-shadow var(--transition-fast);
-  position: relative;
-}
-
-a:hover {
-  color: var(--color-secondary);
-  text-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
-}
-
-/* Interactive link underline effect */
-a:not(nav a):not(.social-links a):after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  background-color: var(--color-secondary);
-  transition: width var(--transition-normal);
-}
-
-a:not(nav a):not(.social-links a):hover:after {
-  width: 100%;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.container {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-  width: 100%;
-}
-
-button, .button {
-  cursor: pointer;
-  font-family: var(--font-main);
-  background: var(--gradient-button);
-  color: white;
-  border: none;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--letter-spacing-normal);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  text-align: center;
-}
-
-button:hover, .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  background: var(--gradient-hover);
-}
-
-button:active, .button:active {
-  transform: translateY(1px);
-}
-
-/* Enhanced header styles with animations */
 header {
-  background: var(--color-header);
+  background: var(--gradient-cosmic-header);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: var(--spacing-lg) var(--container-padding);
+  padding: var(--space-6) 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-floating);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
+  border-bottom: 1px solid var(--color-cosmic-dust);
+  margin-bottom: var(--space-8); /* Create breathing room */
 }
 
 /* Header scroll effect */
 header.scrolled {
-  padding: var(--spacing-md) var(--container-padding);
-  box-shadow: var(--shadow-lg);
+  padding: var(--space-4) 0;
+  box-shadow: var(--shadow-lg), var(--shadow-cosmic-glow);
+}
+
+header .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header h1 {
@@ -312,20 +400,20 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-sm);
+  gap: var(--space-2);
   animation: fadeInDown 1s ease-out;
 }
 
 header h1 img {
-  height: 2rem;
+  height: 2.5rem;
   transform-origin: center;
-  animation: pulse 5s infinite;
+  animation: pulseGlow 5s infinite;
 }
 
-/* Enhanced animations */
-@keyframes pulse {
+/* Enhanced animations for cosmic theme */
+@keyframes pulseGlow {
   0% { transform: scale(1); filter: brightness(1); }
-  50% { transform: scale(1.05); filter: brightness(1.2); }
+  50% { transform: scale(1.05); filter: brightness(1.3) drop-shadow(0 0 5px var(--color-comet-trail)); }
   100% { transform: scale(1); filter: brightness(1); }
 }
 
@@ -340,7 +428,7 @@ header h1 img {
   }
 }
 
-@keyframes glow {
+@keyframes cosmicGlow {
   0% { text-shadow: 0 0 10px rgba(0, 150, 255, 0.5); }
   50% { text-shadow: 0 0 20px rgba(0, 150, 255, 0.8), 0 0 30px rgba(0, 150, 255, 0.4); }
   100% { text-shadow: 0 0 10px rgba(0, 150, 255, 0.5); }
@@ -351,14 +439,26 @@ header h1 img {
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Improved navigation styles */
+/* Star field animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* =========== NAVIGATION =========== */
+
 .nav-container {
+  width: 100%;
+  margin-top: var(--space-6);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: var(--spacing-lg);
   flex-wrap: wrap;
-  gap: var(--spacing-md);
+  gap: var(--space-4);
+}
+
+nav {
+  flex-grow: 1;
 }
 
 nav ul {
@@ -366,7 +466,7 @@ nav ul {
   justify-content: center;
   list-style: none;
   padding: 0;
-  gap: var(--spacing-xl);
+  gap: var(--space-6);
   margin: 0;
   flex-wrap: wrap;
 }
@@ -375,13 +475,16 @@ nav li a {
   color: var(--color-accent);
   text-decoration: none;
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   transition: color var(--transition-normal), transform var(--transition-normal), text-shadow var(--transition-normal);
   display: inline-block;
   position: relative;
-  padding: var(--spacing-xs) var(--spacing-sm);
+  padding: var(--space-2) var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
+/* More cosmic nav effects */
 nav li a::after {
   content: '';
   position: absolute;
@@ -389,22 +492,23 @@ nav li a::after {
   height: 2px;
   bottom: -5px;
   left: 0;
-  background: var(--gradient-primary);
-  transition: width var(--transition-normal);
-  border-radius: var(--border-radius-sm);
+  background: var(--gradient-nebula);
+  transition: width var(--transition-normal), box-shadow var(--transition-normal);
+  border-radius: var(--radius-sm);
 }
 
 nav li a:hover {
-  color: var(--color-secondary);
+  color: var(--color-nova-orange);
   transform: translateY(-2px);
   text-shadow: 0 0 8px rgba(255, 153, 0, 0.5);
 }
 
 nav li a:hover::after {
   width: 100%;
+  box-shadow: var(--shadow-cosmic-glow);
 }
 
-/* Mobile navigation menu */
+/* Mobile navigation menu - improved implementation */
 .mobile-menu-toggle {
   display: none;
   background: transparent;
@@ -412,64 +516,61 @@ nav li a:hover::after {
   font-size: 1.5rem;
   color: var(--color-accent);
   cursor: pointer;
+  padding: var(--space-2);
+  z-index: var(--z-floating);
 }
 
-/* Improved search form */
-.search-form {
-  margin: 0;
-  position: relative;
+/* Mobile menu container for touch devices */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-space-black);
+  z-index: var(--z-modal);
+  padding: var(--space-8) var(--space-4);
+  transform: translateX(-100%);
+  transition: transform var(--transition-normal);
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+.mobile-nav ul {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
 }
 
-.search-form input {
-  padding: var(--spacing-sm) var(--spacing-md);
-  width: 250px;
-  border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
-  border: 2px solid transparent;
-  outline: none;
-  font-family: var(--font-main);
-  font-size: var(--font-size-base);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-text);
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+.mobile-nav li a {
+  font-size: var(--font-size-xl);
 }
 
-.search-form input:focus {
-  border-color: var(--color-accent);
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.search-form input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.search-form button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--gradient-primary);
-  color: white;
+.mobile-nav-close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: transparent;
   border: none;
-  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+  color: var(--color-accent);
+  font-size: 1.5rem;
   cursor: pointer;
-  font-family: var(--font-main);
-  font-size: var(--font-size-base);
-  transition: opacity var(--transition-normal), transform var(--transition-fast);
 }
 
-.search-form button:hover {
-  opacity: 0.9;
-  transform: translateX(2px);
-}
+/* =========== THEME TOGGLE =========== */
 
-/* Theme toggle with improved accessibility */
 .theme-toggle {
   position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
+  top: var(--space-4);
+  right: var(--space-4);
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid transparent;
-  border-radius: var(--border-radius-circle);
+  border: 2px solid var(--color-cosmic-dust);
+  border-radius: var(--radius-full);
   cursor: pointer;
   color: var(--color-text);
   font-size: var(--font-size-lg);
@@ -479,117 +580,431 @@ nav li a:hover::after {
   align-items: center;
   justify-content: center;
   transition: all var(--transition-normal);
+  z-index: var(--z-floating);
 }
 
 .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: rotate(15deg);
+  transform: rotate(30deg);
+  box-shadow: var(--shadow-cosmic-glow);
 }
 
-.theme-toggle:focus {
-  outline: none;
-  border-color: var(--color-accent);
+/* =========== MAIN CONTENT SECTIONS =========== */
+
+/* Star field decoration */
+.star-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-below);
+  pointer-events: none;
 }
 
-/* Enhanced section styles */
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: var(--radius-full);
+  animation: twinkle var(--transition-slow) infinite;
+}
+
+/* Randomized stars with different sizes */
+.star-small {
+  width: 1px;
+  height: 1px;
+}
+
+.star-medium {
+  width: 2px;
+  height: 2px;
+}
+
+.star-large {
+  width: 3px;
+  height: 3px;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Main content sections */
+.main-content {
+  padding: var(--space-8) 0;
+}
+
 section {
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: var(--space-8) var(--space-4);
   background-color: var(--color-card);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin: var(--spacing-xl) 0;
-  border-radius: var(--border-radius-md);
+  margin: var(--space-10) 0;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   overflow: hidden;
   position: relative;
+  border: 1px solid var(--color-cosmic-dust);
 }
 
 /* Section hover effect */
 section:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-cosmic-glow);
+  transform: translateY(-5px);
 }
 
-/* Space particles for sections */
+/* Cosmic decorative elements */
 section::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  opacity: 0.7;
+  height: 3px;
+  background: var(--gradient-nebula);
+  opacity: 0.8;
+}
+
+/* Add cosmic particles to sections */
+section::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-nova-orange);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 10px rgba(255, 109, 0, 0.8);
+  animation: twinkle 3s infinite alternate;
 }
 
 section h2 {
   text-align: center;
-  color: var(--color-secondary);
-  margin-bottom: var(--spacing-xl);
+  color: var(--color-heading);
+  margin-bottom: var(--space-8);
+  animation: cosmicGlow 4s infinite alternate;
 }
 
-/* Improved grid layout */
+/* =========== ARTICLE GRID =========== */
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--spacing-xl);
+  gap: var(--space-6);
   max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
-/* Enhanced article cards */
+/* Enhanced article cards with better spacing */
 article {
-  background: var(--gradient-card);
-  border-radius: var(--border-radius-md);
+  background: var(--gradient-cosmic-card);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-md);
   position: relative;
-  animation: floatUp 0.5s ease-out;
+  animation: floatUp 0.8s ease-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-cosmic-dust);
 }
 
 article:hover {
   transform: translateY(-10px);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  box-shadow: var(--shadow-lg), var(--shadow-cosmic-glow);
+}
+
+/* Add cosmic particle to articles */
+article::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-comet-trail);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  animation: twinkle 3s infinite alternate;
+}
+
+article .image-container {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
 }
 
 article img {
   width: 100%;
-  height: 180px; /* Fixed height, reduced from 200px */
-  object-fit: cover; /* Ensures proper cropping */
-  object-position: center; /* Centers the focus of the image */
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-normal);
 }
 
 article:hover img {
   transform: scale(1.05);
 }
 
+article .content {
+  padding: var(--space-4);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 article h3 {
-  padding: var(--spacing-md);
-  margin: 0;
+  margin: 0 0 var(--space-3);
   text-align: center;
   color: var(--color-heading);
+  font-size: var(--font-size-lg);
 }
 
 article p {
-  padding: 0 var(--spacing-md) var(--spacing-md);
-  margin: 0;
+  margin: 0 0 var(--space-4);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  text-align: center; /* Center alignment of text */
+  text-align: center;
+  flex-grow: 1;
 }
 
-/* Read more link */
+/* Read more link with cosmic effect */
 article .read-more {
-  display: block; /* Change to block for better centering */
+  display: block;
   text-align: center;
-  margin: 0 auto var(--spacing-md);
-  width: fit-content;
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  background: rgba(0, 255, 255, 0.1);
+  align-self: flex-end;
+  font-weight: var(--font-weight-medium);
+}
+article .read-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-nebula);
 }
 
 article .read-more:hover {
   background: rgba(0, 255, 255, 0.1);
   transform: translateX(5px);
+}
+#entertainment .video-link {
+  position: relative;
+  display: block;
+  margin: var(--spacing-lg) auto;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+#entertainment .video-link img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+#entertainment article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#entertainment article .video-link {
+  flex: 0 0 auto;
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+#entertainment article h3 {
+  margin-top: auto;
+}
+
+/* =========== EXOPLANET CARDS FLOW LAYOUT =========== */
+
+.planets-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+
+planet-card {
+  flex: 0 1 calc(33.333% - var(--space-6));
+  min-width: 250px;
+  max-width: 400px;
+  margin-bottom: var(--space-6);
+  display: block;
+  transition: all var(--transition-normal);
+}
+
+planet-card article.planet-card {
+  height: 100%;
+  background: var(--gradient-cosmic-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-cosmic-dust);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  planet-card {
+    flex: 0 1 calc(50% - var(--space-4));
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 576px) {
+  planet-card {
+    flex: 0 1 100%;
+  }
+}
+
+planet-card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  planet-card {
+    flex: 0 1 100%;
+  }
+  
+  #entertainment .grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+}
+
+/* Improve the filter section layout */
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-8);
+}
+
+planet-filter, profile-summary {
+  flex: 1 1 300px;
+}
+
+@media (max-width: 768px) {
+  .filter-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Planet card specific styling */
+planet-card .image-container {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+}
+
+planet-card .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-normal);
+}
+
+planet-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+planet-card .content {
+  padding: var(--space-4);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+planet-card h3 {
+  margin: 0 0 var(--space-3);
+  text-align: center;
+  color: var(--color-heading);
+  font-size: var(--font-size-lg);
+}
+
+planet-card p {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  flex-grow: 1;
+}
+
+planet-card .planet-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  padding: 0 var(--space-2);
+}
+
+planet-card .planet-type,
+planet-card .planet-distance {
+  font-size: var(--font-size-sm);
+  color: var(--color-comet-trail);
+  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+planet-card .read-more {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+  background: rgba(0, 255, 255, 0.1);
+  align-self: center;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Ensure loading spinner is properly centered */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  text-align: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--color-cosmic-dust);
+  border-top-color: var(--color-comet-trail);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Enhanced video section */
@@ -880,9 +1295,7 @@ opacity: 0.8;
     gap: var(--spacing-sm);
   }
   
-  .search-form input {
-    width: 150px;
-  }
+
   
   .grid-container {
     grid-template-columns: 1fr;
