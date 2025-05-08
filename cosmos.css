@@ -21,16 +21,16 @@
       rgba(76, 0, 159, 0.6), 
       rgba(25, 3, 50, 0.9));
   --gradient-starfield: linear-gradient(to bottom, 
-      rgba(5, 6, 24, 0.95), 
-      rgba(10, 10, 42, 0.95));
+      rgba(5, 6, 24, 0.7), 
+      rgba(10, 10, 42, 0.7));
   --gradient-cosmic-card: linear-gradient(135deg, 
       rgba(30, 30, 70, 0.8), 
       rgba(11, 49, 160, 0.4));
   --gradient-warp-drive: linear-gradient(135deg, 
       #4169e1, #7b68ee, #4169e1);
   --gradient-cosmic-header: linear-gradient(180deg, 
-      rgba(5, 6, 24, 0.95), 
-      rgba(10, 10, 42, 0.85));
+      rgba(5, 6, 24, 0.7), 
+      rgba(10, 10, 42, 0.6));
   --gradient-primary: var(--gradient-nebula);
   --gradient-card: var(--gradient-cosmic-card);
       
@@ -38,7 +38,7 @@
   --color-text: var(--color-star-white);
   --color-heading: var(--color-stellar-blue);
   --color-background: var(--color-space-black);
-  --color-card: rgba(30, 30, 70, 0.6);
+  --color-card: rgba(30, 30, 70, 0.4);
   --color-header: var(--color-deep-space);
   --color-footer: rgba(5, 6, 24, 0.95);
   --color-accent: var(--color-comet-trail);
@@ -160,21 +160,21 @@
       rgba(120, 99, 255, 0.6), 
       rgba(52, 84, 209, 0.4));
   --gradient-starfield: linear-gradient(to bottom, 
-      rgba(240, 245, 255, 0.95), 
-      rgba(220, 235, 255, 0.9));
+      rgba(240, 245, 255, 0.6), 
+      rgba(220, 235, 255, 0.6));
   --gradient-cosmic-card: linear-gradient(135deg, 
       rgba(255, 255, 255, 0.9), 
       rgba(193, 217, 255, 0.7));
   --gradient-warp-drive: linear-gradient(135deg, 
       #3454d1, #6e8de9, #3454d1);
   --gradient-cosmic-header: linear-gradient(180deg, 
-      rgba(240, 245, 255, 0.95), 
-      rgba(220, 235, 255, 0.85));
+      rgba(240, 245, 255, 0.7), 
+      rgba(220, 235, 255, 0.6));
   
   --color-text: var(--color-star-white);
   --color-heading: var(--color-stellar-blue);
   --color-background: var(--color-space-black);
-  --color-card: rgba(255, 255, 255, 0.8);
+  --color-card: rgba(255, 255, 255, 0.5);
   --color-header: var(--color-deep-space);
   --color-footer: rgba(240, 245, 255, 0.95);
   --color-accent: var(--color-nebula-blue);
@@ -274,6 +274,7 @@ h6 {
 }
 
 p {
+  text-align: center;
   margin-bottom: var(--space-5);
   line-height: var(--line-height-relaxed);
   max-width: 70ch; /* Optimal reading width */
@@ -382,21 +383,21 @@ button:active, .button:active {
 
 header {
   background: var(--gradient-cosmic-header);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(10px);
-  padding: var(--space-6) 0;
+  padding: var(--space-3) 0;
   position: sticky;
   top: 0;
   z-index: var(--z-floating);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
   border-bottom: 1px solid var(--color-cosmic-dust);
-  margin-bottom: var(--space-8); /* Create breathing room */
+  margin-bottom: var(--space-2); /* Create breathing room */
 }
 
 /* Header scroll effect */
 header.scrolled {
-  padding: var(--space-4) 0;
+  padding: var(--space-2) 0;
   box-shadow: var(--shadow-lg), var(--shadow-cosmic-glow);
 }
 
@@ -1206,7 +1207,7 @@ footer p {
 
 /* Enhanced portrait section */
 .portrait-background {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
               url('images/galaxy-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
@@ -1221,7 +1222,7 @@ footer p {
 
 /* Light mode portrait background */
 [data-theme="light"] .portrait-background {
-  background: linear-gradient(rgba(240, 245, 255, 0.3), rgba(240, 245, 255, 0.3)), 
+  background: linear-gradient(rgba(240, 245, 255, 0.2), rgba(240, 245, 255, 0.2)), 
               url('images/galaxy-bg.jpg') no-repeat center center fixed;
   background-size: cover;
 }
