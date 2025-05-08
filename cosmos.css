@@ -239,6 +239,7 @@ h2 {
   position: relative;
   padding-bottom: var(--space-4);
   text-shadow: 0 0 8px rgba(0, 150, 255, 0.4);
+  text-align: center;
   margin-bottom: var(--space-8);
 }
 
@@ -276,6 +277,17 @@ p {
   margin-bottom: var(--space-5);
   line-height: var(--line-height-relaxed);
   max-width: 70ch; /* Optimal reading width */
+}
+li{
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-normal);
+  list-style-type: disc;
+  padding-left: var(--space-4);
+}
+ul {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-4);
+  list-style-type: disc;
 }
 
 /* =========== LINKS & BUTTONS =========== */
@@ -1008,6 +1020,7 @@ planet-card .read-more {
 }
 
 /* Enhanced video section */
+/* Enhanced video section - updated to make video fill container */
 .video-section {
   background-color: var(--color-background);
   padding: var(--spacing-xxl) var(--spacing-md);
@@ -1025,7 +1038,8 @@ planet-card .read-more {
 }
 
 .video-container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   box-shadow: var(--shadow-lg);
   border-radius: var(--border-radius-md);
@@ -1034,14 +1048,45 @@ planet-card .read-more {
   padding-top: 56.25%; /* 16:9 aspect ratio */
 }
 
-.video-container video,
-.video-container iframe {
+/* Updated styles to make video fill the container */
+.video-container iframe,
+.video-container video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: none;
   border-radius: var(--border-radius-md);
+}
+
+/* Make the video link fill the entire container */
+.video-container .video-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: none;
+  display: block;
+}
+
+.video-container .video-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* YouTube embed solution */
+.video-container iframe.youtube-embed {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* Enhanced audio player */
@@ -1103,7 +1148,7 @@ footer {
   background-color: var(--color-footer);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  padding: var(--spacing-xl) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-xl);
   text-align: center;
   position: relative;
 }
@@ -1126,20 +1171,11 @@ footer p {
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--spacing-lg);
-  max-width: var(--container-max-width);
+  justify-content: center;
   margin: 0 auto;
+  text-align: center;
 }
 
-.footer-column {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-column h3 {
-  margin-bottom: var(--spacing-md);
-}
 
 .social-links {
   display: flex;
@@ -1295,7 +1331,9 @@ opacity: 0.8;
     gap: var(--spacing-sm);
   }
   
-
+  .search-form input {
+    width: 150px;
+  }
   
   .grid-container {
     grid-template-columns: 1fr;
