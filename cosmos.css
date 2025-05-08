@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;700;900&display=swap');
-
 :root {
   /* COSMIC COLOR PALETTE - Enhanced with proper space theme */
   --color-space-black: #050618;
@@ -48,7 +44,7 @@
   
   /* TYPOGRAPHY - Space-themed typographic scale using the golden ratio (1.618) */
   --font-main: 'Exo 2', 'Montserrat', sans-serif;
-  --font-headings: 'Orbitron', 'Saira', sans-serif;
+  --font-headings: 'Space Mono', 'Saira', sans-serif;
   --font-mono: 'Space Mono', monospace;
   --font-size-xs: 0.75rem;     /* 12px */
   --font-size-sm: 0.875rem;    /* 14px */
@@ -243,7 +239,6 @@ h2 {
   margin-bottom: var(--space-8);
 }
 
-/* Add cosmic decoration to h2 */
 h2::after {
   content: '';
   position: absolute;
