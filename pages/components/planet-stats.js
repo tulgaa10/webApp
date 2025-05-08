@@ -14,19 +14,16 @@ class PlanetStats extends HTMLElement {
     this._activeFilter = localStorage.getItem('planet-filter') || 'all';
     this._currentTheme = localStorage.getItem('theme') || 'light';
     
-    // Bind handlers
     this.handlePlanetLiked = this.handlePlanetLiked.bind(this);
     this.handlePlanetsLoaded = this.handlePlanetsLoaded.bind(this);
     this.handleStatCardClick = this.handleStatCardClick.bind(this);
-    this.handleThemeChange = this.handleThemeChange.bind(this); // Missing binding
+    this.handleThemeChange = this.handleThemeChange.bind(this);
   }
   
-  // Getter for stats property
   get stats() {
     return this._stats;
   }
   
-  // Setter for stats property
   set stats(value) {
     this._stats = value;
     this.saveStats();
@@ -188,12 +185,31 @@ class PlanetStats extends HTMLElement {
       localStorage.setItem('planet-filter', newFilter);
       
       // Dispatch filter-changed event to notify other components
+      // For liked filter, we need to include additional info to help other components filter properly
+      const eventDetail = {
+        selected: newFilter
+      };
+      
+      // For the 'liked' filter, we need to add the list of liked planet IDs
+      if (newFilter === 'liked') {
+        // Get all liked planet IDs from localStorage
+        const likedPlanetIds = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key.startsWith('like-')) {
+            const isLiked = JSON.parse(localStorage.getItem(key));
+            if (isLiked) {
+              likedPlanetIds.push(key.replace('like-', ''));
+            }
+          }
+        }
+        eventDetail.likedPlanetIds = likedPlanetIds;
+      }
+      
       this.dispatchEvent(new CustomEvent('filter-changed', {
         bubbles: true,
         composed: true,
-        detail: {
-          selected: newFilter
-        }
+        detail: eventDetail
       }));
       
       this.render();
@@ -673,7 +689,7 @@ class PlanetStats extends HTMLElement {
           </div>
         ` : ''}
         
-        <div class="filter-hint">Гаригуудыг шүүхийн тулд статистикийн тойрог дээр дарна уу</div>
+        <div class="filter-hint">Гаригуудыг шүүхийн тулд статистикийн тойх дээр дарна уу</div>
         
         ${mostLikedType ? `
           <div class="favorite-type">
