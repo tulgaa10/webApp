@@ -3,17 +3,37 @@ import './components/planet-filter.js';
 import './components/profile-summary.js';
 import './components/planet-stats.js';
 import apiService from './services/api-service.js';
+
 class HomePage extends HTMLElement {
   constructor() {
     super();
     this.planets = [];
     this.filterOptions = [];
+    this.likedPlanetIds = [];
     
     // Get the initial filter from localStorage
     this.currentFilter = localStorage.getItem('planet-filter') || 'all';
     this.isLoading = true;
+    
+    // If initial filter is 'liked', we should pre-load liked planet IDs
+    if (this.currentFilter === 'liked') {
+      this.preloadLikedPlanetIds();
+    }
   }
-
+  
+  // Helper method to preload liked planet IDs from localStorage
+  preloadLikedPlanetIds() {
+    this.likedPlanetIds = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith('like-')) {
+        const isLiked = JSON.parse(localStorage.getItem(key));
+        if (isLiked) {
+          this.likedPlanetIds.push(key.replace('like-', ''));
+        }
+      }
+    }
+  }
   async connectedCallback() {
     // Initial render with loading state
     this.render();
@@ -21,18 +41,89 @@ class HomePage extends HTMLElement {
     // Listen for filter change events
     this.addEventListener('filter-changed', (event) => {
       this.currentFilter = event.detail.selected;
-      this.renderPlanets();
-    });
-    
-    try {
-      // Load data from API
-      const [planets, filterOptions] = await Promise.all([
-        apiService.getPlanets(),
-        apiService.getFilterOptions()
-      ]);
       
-      this.planets = planets;
-      this.filterOptions = filterOptions;
+      // Store the liked planet IDs if provided (for the 'liked' filter)
+      if (event.detail.likedPlanetIds) {
+        this.likedPlanetIds = event.detail.likedPlanetIds;
+      }
+      
+      localStorage.setItem('planet-filter', this.currentFilter);
+      this.renderPlanets();
+    });    
+    try {
+      // For demonstration purposes - mock data if API fails
+      let mockPlanets = [
+        {
+          id: 1,
+          name: "Kepler-186f",
+          type: "rocky",
+          distance: 492,
+          description: "Earth-sized exoplanet in the habitable zone",
+          imageUrl: "images/planet1.jpg"
+        },
+        {
+          id: 2,
+          name: "HD 209458b",
+          type: "gas",
+          distance: 150,
+          description: "Hot Jupiter exoplanet with detected atmosphere",
+          imageUrl: "images/planet2.jpg"
+        },
+        {
+          id: 3,
+          name: "TRAPPIST-1e",
+          type: "rocky",
+          distance: 39,
+          description: "Potentially habitable world in a seven-planet system",
+          imageUrl: "images/planet3.jpg"
+        },
+        {
+          id: 4,
+          name: "51 Pegasi b",
+          type: "gas",
+          distance: 50,
+          description: "First exoplanet discovered orbiting a Sun-like star",
+          imageUrl: "images/planet4.jpg"
+        },
+        {
+          id: 5,
+          name: "Proxima Centauri b",
+          type: "rocky",
+          distance: 4.2,
+          description: "Closest known exoplanet to our Solar System",
+          imageUrl: "images/planet5.jpg"
+        },
+        {
+          id: 6,
+          name: "WASP-12b",
+          type: "gas",
+          distance: 870,
+          description: "Ultra-hot Jupiter being consumed by its star",
+          imageUrl: "images/planet6.jpg"
+        }
+      ];
+      
+      let mockFilters = [
+        { value: "all", label: "Бүх гаригууд" },
+        { value: "rocky", label: "Хадан гаригууд" },
+        { value: "gas", label: "Хийн гаригууд" }
+      ];
+      
+      // Load data from API with fallback to mock data
+      try {
+        const [planets, filterOptions] = await Promise.all([
+          apiService.getPlanets(),
+          apiService.getFilterOptions()
+        ]);
+        
+        this.planets = planets;
+        this.filterOptions = filterOptions;
+      } catch (apiError) {
+        console.warn('API call failed, using mock data:', apiError);
+        this.planets = mockPlanets;
+        this.filterOptions = mockFilters;
+      }
+      
       this.isLoading = false;
       
       // Dispatch planets-loaded event for components that need to know about planets
@@ -45,8 +136,8 @@ class HomePage extends HTMLElement {
       
       // Re-render with data
       this.render();
-      setTimeout(() => this.renderPlanets(), 0);
-      } catch (error) {
+      this.renderPlanets();
+    } catch (error) {
       console.error('Failed to load initial data:', error);
       this.isLoading = false;
       this.render();
@@ -54,50 +145,75 @@ class HomePage extends HTMLElement {
   }
   
   // Filter planets based on the current filter
-  getFilteredPlanets() {
-    if (this.currentFilter === 'all') {
-      return this.planets;
-    } else {
-      return this.planets.filter(planet => planet.type === this.currentFilter);
-    }
+// Filter planets based on the current filter
+getFilteredPlanets() {
+  if (this.currentFilter === 'all') {
+    return this.planets;
+  } else if (this.currentFilter === 'liked') {
+    // Filter for liked planets by checking localStorage
+    return this.planets.filter(planet => {
+      const isLiked = JSON.parse(localStorage.getItem(`like-${planet.id}`)) || false;
+      return isLiked;
+    });
+  } else {
+    return this.planets.filter(planet => planet.type === this.currentFilter);
+  }
+}
+// Render the planets section
+renderPlanets() {
+  const container = this.querySelector('.planets-container');
+  if (!container) return;
+  
+  if (this.isLoading) {
+    container.innerHTML = `
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Гаригуудын мэдээлэл ачааллаж байна...</p>
+      </div>
+    `;
+    return;
   }
   
-  // Render the planets section
-  renderPlanets() {
-    const container = this.querySelector('.planets-container');
-    if (!container) return;
-    
-    if (this.isLoading) {
-      container.innerHTML = `
-        <div class="loading-spinner">
-          <div class="spinner"></div>
-          <p>Гаригуудын мэдээлэл ачааллаж байна...</p>
-        </div>
-      `;
-      return;
+  let filteredPlanets = [];
+  
+  // Apply filtering based on the current filter
+  if (this.currentFilter === 'all') {
+    filteredPlanets = this.planets;
+  } else if (this.currentFilter === 'liked') {
+    // If we have pre-loaded likedPlanetIds, use them for efficiency
+    if (this.likedPlanetIds && this.likedPlanetIds.length > 0) {
+      filteredPlanets = this.planets.filter(planet => 
+        this.likedPlanetIds.includes(planet.id.toString())
+      );
+    } else {
+      // Otherwise check localStorage for each planet
+      filteredPlanets = this.planets.filter(planet => {
+        const isLiked = JSON.parse(localStorage.getItem(`like-${planet.id}`)) || false;
+        return isLiked;
+      });
     }
-    
-    const filteredPlanets = this.getFilteredPlanets();
-    
-    if (filteredPlanets.length === 0) {
-      container.innerHTML = '<p>Хайлтад тохирох гаригууд олдсонгүй.</p>';
-      return;
-    }
-    
-    // Map the filtered planets to planet-card elements
-    container.innerHTML = filteredPlanets.map(planet => {
-      // Safely encode JSON to prevent issues with quotes
-      const planetData = JSON.stringify(planet).replace(/'/g, '&#39;');
-      return `<planet-card data='${planetData}'></planet-card>`;
-    }).join('');
+  } else {
+    filteredPlanets = this.planets.filter(planet => planet.type === this.currentFilter);
   }
-
+  
+  if (filteredPlanets.length === 0) {
+    container.innerHTML = '<p>Хайлтад тохирох гаригууд олдсонгүй.</p>';
+    return;
+  }
+  
+  // Clear existing content
+  container.innerHTML = '';
+  
+  // Create and append each planet card as a DOM element
+  filteredPlanets.forEach(planet => {
+    const planetCard = document.createElement('planet-card');
+    planetCard.setAttribute('data', JSON.stringify(planet));
+    container.appendChild(planetCard);
+  });
+}
   render() {
     this.innerHTML = `
       <div class="container">
-        <div class="galaxy-background">
-          <h2>Орчлон ертөнцийн гайхамшгийг нээцгээе</h2>
-        </div>
 
         <!-- Entertainment Section -->
         <section id="entertainment">
@@ -134,7 +250,6 @@ class HomePage extends HTMLElement {
         <section id="exoplanets">
           <h2>Экзогаригууд</h2>
           
-          <!-- Add our planet-stats component here -->
           <planet-stats></planet-stats>
           
           <div class="filter-section">
@@ -179,23 +294,6 @@ class HomePage extends HTMLElement {
         </section>
       </div>
     `;
-    
-    // Add theme toggle functionality
-    const themeToggle = document.querySelector('#themeToggle');
-    if (!themeToggle) {
-      const toggle = document.createElement('button');
-      toggle.id = 'themeToggle';
-      toggle.className = 'theme-toggle';
-      toggle.textContent = '🌞 / 🌙';
-      toggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-      this.querySelector('.container').prepend(toggle);
-    }
   }
 }
 
