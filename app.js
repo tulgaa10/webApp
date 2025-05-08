@@ -8,6 +8,20 @@ import './pages/proxima-page.js';
 import './pages/gliese-page.js';
 import './app-router.js';
 import './app-root.js';
+
+// Function to update logo based on theme
+function updateLogo(theme) {
+  const logo = document.getElementById('logo');
+  if (logo) {
+    const logoSrc = theme === 'dark' ? 
+      logo.getAttribute('data-dark-src') : 
+      logo.getAttribute('data-light-src');
+    
+    if (logoSrc) {
+      logo.src = logoSrc;
+    }
+  }
+}
  
 // Setup theme on initial load
 function initTheme() {
@@ -16,6 +30,9 @@ function initTheme() {
   
   const theme = savedTheme || (prefersDark ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', theme);
+  
+  // Update logo based on theme
+  updateLogo(theme);
   
   // Dispatch theme-changed event on initial load
   const event = new CustomEvent('theme-changed', {
@@ -43,6 +60,9 @@ function setupThemeToggle() {
       // Save to localStorage
       localStorage.setItem('theme', newTheme);
       
+      // Update logo based on theme
+      updateLogo(newTheme);
+      
       // Create the event once
       const event = new CustomEvent('theme-changed', {
         bubbles: true,
@@ -59,9 +79,12 @@ function setupThemeToggle() {
   }
 }
 
-// Force theme application on all shadow DOM components
+// Force theme application on all components
 function applyThemeToAllComponents() {
   const theme = document.documentElement.getAttribute('data-theme');
+  
+  // Update logo based on theme
+  updateLogo(theme);
   
   // Create theme event
   const event = new CustomEvent('theme-changed', {
@@ -91,4 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // After a short delay, ensure theme is applied to all components
   setTimeout(applyThemeToAllComponents, 1000);
+  
+  // Listen for theme changes at the document level
+  document.addEventListener('theme-changed', (event) => {
+    updateLogo(event.detail.theme);
+  });
 });
