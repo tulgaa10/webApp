@@ -1054,6 +1054,7 @@ planet-card .read-more {
   height: 100%;
   border: none;
   border-radius: var(--border-radius-md);
+  object-fit: cover;
 }
 
 /* Make the video link fill the entire container */
