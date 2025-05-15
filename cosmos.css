@@ -202,14 +202,17 @@ body {
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--color-text);
-  background: var(--gradient-starfield), 
-              url('images/galaxy-bg.jpg') no-repeat center center fixed;
+  background-image: var(--gradient-starfield), url('images/galaxy-bg.jpg');
+  background-attachment: scroll, fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
   transition: color var(--transition-normal), background var(--transition-normal);
   overflow-x: hidden;
-  padding-top: var(--space-4); /* Create initial breathing room */
 }
+
+
 
 /* =========== TYPOGRAPHY =========== */
 
@@ -1200,6 +1203,33 @@ footer p {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: var(--shadow-glow);
 }
+.detailed-info {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-6);
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.detailed-info .planet-photo {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+  flex-shrink: 0;
+}
+
+.detailed-info .info-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+
+.grid-container article img {
+  margin-bottom: var(--space-3); /* or use space-7 or space-8 for more space */
+}
+
 
 /* Enhanced portrait section */
 .portrait-background {
