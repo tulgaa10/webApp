@@ -42,19 +42,23 @@ class GliesePage extends HTMLElement {
           </section>
           <section>
             <h2>Дэлгэрэнгүй мэдээлэл</h2>
-            <article style="grid-column: 1 / -1;">
-              <h3>${data.name} гаригийн шинж чанар</h3>
-              <p>${data.fullDescription} Энэ гариг Дэлхийгээс ${data.distanceFromEarth} зайд байрладаг.</p>
-              <ul>
-                <li>Дэлхийгээс ${data.physicalProperties.mass} дахин их масстай</li>
-                <li>Радиус: Дэлхийгээс ${data.physicalProperties.radius} дахин том</li>
-                <li>Гадаргын температур: ${data.physicalProperties.temperature} Кельвин</li>
-                <li>Таталцал: Дэлхийгээс ${data.physicalProperties.gravity} дахин их</li>
-                <li>Нээгдсэн он: ${data.discoveryYear}</li>
-                <li>Одын төрөл: ${data.starType}</li>
-              </ul>
+            <article class="detailed-info">
+              <img src="images/Gliese_581_g.jpg" alt="${data.name} image" class="planet-photo">
+              <div class="info-text">
+                <h3>${data.name} гаригийн шинж чанар</h3>
+                <p>${data.fullDescription} Энэ гариг Дэлхийгээс ${data.distanceFromEarth} зайд байрладаг.</p>
+                <ul>
+                  <li>Дэлхийгээс ${data.physicalProperties.mass} дахин их масстай</li>
+                  <li>Радиус: Дэлхийгээс ${data.physicalProperties.radius} дахин том</li>
+                  <li>Гадаргын температур: ${data.physicalProperties.temperature} Кельвин</li>
+                  <li>Таталцал: Дэлхийгээс ${data.physicalProperties.gravity} дахин их</li>
+                  <li>Нээгдсэн он: ${data.discoveryYear}</li>
+                  <li>Одын төрөл: ${data.starType}</li>
+                </ul>
+              </div>
             </article>
           </section>
+
           <section class="video-section">
             <h2>${data.name} тухай видео</h2>
             <div class="video-container">
