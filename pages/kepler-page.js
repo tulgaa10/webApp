@@ -32,7 +32,7 @@ class KeplerPage extends HTMLElement {
                 <p>Кеплер-22b гаригийн урлагын дүрслэл. Энэ гариг Дэлхийгээс ${data.physicalProperties.radius} дахин том бөгөөд амьдрах боломжтой бүсэд оршдог.</p>
               </article>
               <article>
-                <img[src="exoplanets/kepler-22b/kepler-22-system.jpg" alt="Kepler-22 system">
+                <img src="exoplanets/kepler-22b/kepler-22-system.jpg" alt="Kepler-22 system">
                 <h3>Кеплер-22 систем</h3>
                 <p>Кеплер-22 од болон түүний гаригуудын систем. Кеплер-22b нь ${data.starType} төрлийн одыг тойрон эргэлддэг бөгөөд амьдрах боломжтой бүсэд байрладаг.</p>
               </article>
@@ -45,17 +45,20 @@ class KeplerPage extends HTMLElement {
           </section>
           <section>
             <h2>Дэлгэрэнгүй мэдээлэл</h2>
-            <article style="grid-column: 1 / -1;">
-              <h3>${data.name} гаригийн шинж чанар</h3>
-              <p>${data.fullDescription} Энэ гариг Дэлхийгээс ${data.distanceFromEarth} зайд байрладаг.</p>
-              <ul>
-                <li>Дэлхийгээс ${data.physicalProperties.radius} дахин том радиустай</li>
-                <li>Одны эргэн тойронд ${data.orbitalPeriod} хоногт нэг эргэлддэг</li>
-                <li>Гадаргын дундаж температур: ${data.physicalProperties.temperature} °C</li>
-                <li>Амьдрах боломжтой бүсэд байрладаг</li>
-                <li>Нээгдсэн он: ${data.discoveryYear}</li>
-                <li>Одын төрөл: ${data.starType}</li>
-              </ul>
+            <article class="detailed-info">
+              <img src="images/Kepler-22_b.jpg" alt="${data.name} image" class="planet-photo">
+              <div class="info-text">
+                <h3>${data.name} гаригийн шинж чанар</h3>
+                <p>${data.fullDescription} Энэ гариг Дэлхийгээс ${data.distanceFromEarth} зайд байрладаг.</p>
+                <ul>
+                  <li>Дэлхийгээс ${data.physicalProperties.mass} дахин их масстай</li>
+                  <li>Радиус: Дэлхийгээс ${data.physicalProperties.radius} дахин том</li>
+                  <li>Гадаргын температур: ${data.physicalProperties.temperature} Кельвин</li>
+                  <li>Таталцал: Дэлхийгээс ${data.physicalProperties.gravity} дахин их</li>
+                  <li>Нээгдсэн он: ${data.discoveryYear}</li>
+                  <li>Одын төрөл: ${data.starType}</li>
+                </ul>
+              </div>
             </article>
           </section>
           <section class="video-section">
