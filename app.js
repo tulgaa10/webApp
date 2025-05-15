@@ -22,29 +22,33 @@ function updateLogo(theme) {
     }
   }
 }
+function updateThemeToggleIcon(theme) {
+  const toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.textContent = theme === 'dark' ? '🌙' : '🌞';
+  }
+}
+
  
 // Setup theme on initial load
 function initTheme() {
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
   const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+
   document.documentElement.setAttribute('data-theme', theme);
-  
-  // Update logo based on theme
   updateLogo(theme);
-  
-  // Dispatch theme-changed event on initial load
+  updateThemeToggleIcon(theme);
+
   const event = new CustomEvent('theme-changed', {
     bubbles: true,
     composed: true,
     detail: { theme }
   });
-  
-  // Dispatch to both document and window to ensure it propagates everywhere
   document.dispatchEvent(event);
   window.dispatchEvent(event);
 }
+
 
 function setupThemeToggle() {
   // Changed from theme-toggle to themeToggle to match the ID in index.html
@@ -62,6 +66,7 @@ function setupThemeToggle() {
       
       // Update logo based on theme
       updateLogo(newTheme);
+      updateThemeToggleIcon(newTheme);
       
       // Create the event once
       const event = new CustomEvent('theme-changed', {
