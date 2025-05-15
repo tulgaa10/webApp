@@ -295,6 +295,104 @@ class PlanetStats extends HTMLElement {
     return '';
   }
   
+  // Generate planet texture SVG for background
+  getPlanetTexture(type) {
+    const textures = {
+      'all': `
+        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="planetGradient" cx="50%" cy="50%" r="50%" fx="25%" fy="25%">
+              <stop offset="0%" stop-color="#3498db" stop-opacity="1" />
+              <stop offset="80%" stop-color="#2980b9" stop-opacity="1" />
+              <stop offset="100%" stop-color="#1a5276" stop-opacity="1" />
+            </radialGradient>
+            <filter id="planetNoise" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="1" />
+              <feDisplacementMap in="SourceGraphic" scale="5" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#planetGradient)" filter="url(#planetNoise)" />
+          <ellipse cx="50" cy="50" rx="40" ry="12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" transform="rotate(-25,50,50)" />
+          <ellipse cx="50" cy="50" rx="35" ry="10" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" transform="rotate(15,50,50)" />
+        </svg>
+      `,
+      'liked': `
+        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="likedPlanetGradient" cx="50%" cy="50%" r="50%" fx="25%" fy="25%">
+              <stop offset="0%" stop-color="#ff5e5e" stop-opacity="1" />
+              <stop offset="80%" stop-color="#e74c3c" stop-opacity="1" />
+              <stop offset="100%" stop-color="#c0392b" stop-opacity="1" />
+            </radialGradient>
+            <filter id="likedNoise" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" seed="2" />
+              <feDisplacementMap in="SourceGraphic" scale="5" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#likedPlanetGradient)" filter="url(#likedNoise)" />
+          <path d="M50,25 C55,35 65,40 75,40 C65,50 65,65 50,75 C35,65 35,50 25,40 C35,40 45,35 50,25" fill="#ff8a8a" transform="scale(0.6) translate(33, 30)" />
+        </svg>
+      `,
+      'habitable': `
+        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="habitablePlanetGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+              <stop offset="0%" stop-color="#2ecc71" stop-opacity="1" />
+              <stop offset="70%" stop-color="#27ae60" stop-opacity="1" />
+              <stop offset="100%" stop-color="#1e8449" stop-opacity="1" />
+            </radialGradient>
+            <filter id="habitableNoise" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" seed="3" />
+              <feDisplacementMap in="SourceGraphic" scale="6" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#habitablePlanetGradient)" filter="url(#habitableNoise)" />
+          <path d="M30,40 Q50,20 70,40 T70,60 Q50,75 30,60 T30,40" fill="#3498db" fill-opacity="0.5" />
+          <path d="M25,50 Q40,35 45,55 T65,65 Q60,70 35,65 T25,50" fill="#3498db" fill-opacity="0.4" />
+        </svg>
+      `,
+      'close': `
+        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="closePlanetGradient" cx="50%" cy="50%" r="50%" fx="25%" fy="25%">
+              <stop offset="0%" stop-color="#f39c12" stop-opacity="1" />
+              <stop offset="70%" stop-color="#e67e22" stop-opacity="1" />
+              <stop offset="100%" stop-color="#d35400" stop-opacity="1" />
+            </radialGradient>
+            <filter id="closeNoise" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="4" />
+              <feDisplacementMap in="SourceGraphic" scale="4" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#closePlanetGradient)" filter="url(#closeNoise)" />
+          <circle cx="65" cy="35" r="10" fill="#f5b041" fill-opacity="0.5" />
+          <circle cx="35" cy="60" r="8" fill="#f5b041" fill-opacity="0.3" />
+          <ellipse cx="50" cy="50" rx="45" ry="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" transform="rotate(30,50,50)" />
+        </svg>
+      `,
+      'super-earth': `
+        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="superEarthGradient" cx="50%" cy="50%" r="50%" fx="25%" fy="25%">
+              <stop offset="0%" stop-color="#9b59b6" stop-opacity="1" />
+              <stop offset="70%" stop-color="#8e44ad" stop-opacity="1" />
+              <stop offset="100%" stop-color="#6c3483" stop-opacity="1" />
+            </radialGradient>
+            <filter id="superEarthNoise" x="-50%" y="-50%" width="200%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="5" seed="5" />
+              <feDisplacementMap in="SourceGraphic" scale="5" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#superEarthGradient)" filter="url(#superEarthNoise)" />
+          <ellipse cx="50" cy="50" rx="48" ry="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" />
+          <ellipse cx="50" cy="50" rx="42" ry="8" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" transform="rotate(60,50,50)" />
+        </svg>
+      `
+    };
+    
+    return textures[type] || textures['all'];
+  }
+  
   render() {
     const { totalPlanets, likedPlanets, habitablePlanets, closePlanets, superEarthPlanets, mostLikedType } = this._stats;
     
@@ -314,8 +412,8 @@ class PlanetStats extends HTMLElement {
           /* Light Mode Default */
           --stats-bg-light: rgba(255, 255, 255, 0.6);
           --stats-bg-dark: rgba(15, 23, 42, 0.6);
-          --card-bg-light: rgba(224, 231, 255, 0.7);
-          --card-bg-dark: rgba(30, 41, 59, 0.6);
+          --card-bg-light: rgba(224, 231, 255, 0.4);
+          --card-bg-dark: rgba(30, 41, 59, 0.4);
           --text-light: #1e293b;
           --text-dark: #e2e8f0;
           --heading-light: #2563eb;
@@ -330,6 +428,13 @@ class PlanetStats extends HTMLElement {
           --active-card-border-dark: rgba(56, 189, 248, 0.8);
           --active-card-shadow-light: 0 0 15px rgba(59, 130, 246, 0.4);
           --active-card-shadow-dark: 0 0 15px rgba(56, 189, 248, 0.4);
+          
+          /* Planet colors */
+          --planet-all-color: #3498db;
+          --planet-liked-color: #e74c3c;
+          --planet-habitable-color: #2ecc71;
+          --planet-close-color: #e67e22;
+          --planet-super-earth-color: #9b59b6;
           
           /* Default to Light Mode */
           --stats-bg: var(--stats-bg-light);
@@ -384,7 +489,7 @@ class PlanetStats extends HTMLElement {
           overflow: hidden;
         }
         
-        /* Cosmic Background Effect */
+        /* Space Background Effect */
         .stats-container::before {
           content: '';
           position: absolute;
@@ -392,8 +497,9 @@ class PlanetStats extends HTMLElement {
           left: -50%;
           width: 200%;
           height: 200%;
-          background: radial-gradient(circle at center, transparent 15%, var(--stats-bg) 60%);
-          opacity: 0.3;
+          background: radial-gradient(ellipse at center, rgba(16, 16, 49, 0.3) 0%, transparent 70%),
+                      radial-gradient(ellipse at 80% 30%, rgba(120, 0, 255, 0.1) 0%, transparent 50%),
+                      radial-gradient(ellipse at 20% 70%, rgba(0, 120, 255, 0.1) 0%, transparent 50%);
           z-index: -1;
           pointer-events: none;
           animation: cosmic-pulse 15s infinite alternate;
@@ -416,9 +522,26 @@ class PlanetStats extends HTMLElement {
           animation: twinkle var(--duration, 4s) infinite ease-in-out;
         }
         
+        .shooting-star {
+          position: absolute;
+          width: 80px;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+          z-index: -1; 
+          transform: rotate(var(--rotation, 45deg));
+          animation: shoot var(--duration, 6s) infinite ease-out var(--delay, 0s);
+          opacity: 0;
+        }
+        
+        @keyframes shoot {
+          0% { transform: translateX(-100px) translateY(-100px) rotate(var(--rotation)); opacity: 1; }
+          20% { transform: translateX(300px) translateY(300px) rotate(var(--rotation)); opacity: 0; }
+          100% { transform: translateX(300px) translateY(300px) rotate(var(--rotation)); opacity: 0; }
+        }
+        
         @keyframes twinkle {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.8; }
+          0%, 100% { opacity: 0.2; transform: scale(0.8); }
+          50% { opacity: 0.8; transform: scale(1.2); }
         }
         
         h3 {
@@ -478,16 +601,57 @@ class PlanetStats extends HTMLElement {
           cursor: pointer;
           user-select: none;
           text-align: center;
+          backdrop-filter: blur(3px);
+        }
+        
+        /* Planet background */
+        .planet-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          opacity: 0.85;
+          transition: transform 0.5s ease;
+        }
+        
+        /* Card Rings */
+        .ring {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          border-radius: 50%;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          transform: translate(-50%, -50%);
+          pointer-events: none;
+          animation: rotate var(--duration, 20s) linear infinite;
+        }
+        
+        .stat-card[data-filter="all"] .ring { border-color: rgba(52, 152, 219, 0.3); }
+        .stat-card[data-filter="liked"] .ring { border-color: rgba(231, 76, 60, 0.3); }
+        .stat-card[data-filter="habitable"] .ring { border-color: rgba(46, 204, 113, 0.3); }
+        .stat-card[data-filter="close"] .ring { border-color: rgba(230, 126, 34, 0.3); }
+        .stat-card[data-filter="super-earth"] .ring { border-color: rgba(155, 89, 182, 0.3); }
+        
+        @keyframes rotate {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
         
         .stat-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+          transform: translateY(-8px) scale(1.05);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-card:hover .planet-bg {
+          transform: scale(1.1) rotate(10deg);
         }
         
         .stat-card.active {
           border: 2px solid var(--active-card-border);
           box-shadow: var(--active-card-shadow);
+          z-index: 1;
         }
         
         /* Active indicator */
@@ -544,7 +708,7 @@ class PlanetStats extends HTMLElement {
         }
         
         .stat-label {
-          font-size: 0.85rem;
+          font-size: 1rem;
           text-align: center;
           font-weight: 500;
           margin-bottom: 0.3rem;
@@ -672,14 +836,12 @@ class PlanetStats extends HTMLElement {
             <div class="stat-value">${habitablePlanets}</div>
           </div>
           
-          <div class="stat-card ${this._activeFilter === 'close' ? 'active' : ''}" data-filter="close">
-            <div class="stat-label">Хамгийн ойрхон</div>
-            <div class="stat-value">${closePlanets}</div>
-          </div>
-          
           <div class="stat-card ${this._activeFilter === 'super-earth' ? 'active' : ''}" data-filter="super-earth">
             <div class="stat-label">Супер дэлхий</div>
             <div class="stat-value">${superEarthPlanets}</div>
+          </div>
+          <div class="stat-card ${this._activeFilter === 'close' ? 'active' : ''}" data-filter="close">
+            <div class="stat-label">Хамгийн ойрхон</div>
           </div>
         </div>
         
@@ -689,7 +851,7 @@ class PlanetStats extends HTMLElement {
           </div>
         ` : ''}
         
-        <div class="filter-hint">Гаригуудыг шүүхийн тулд статистикийн тойх дээр дарна уу</div>
+        <div class="filter-hint">Гаригуудыг шүүхийн тулд статистикийн тойрог дээр дарна уу</div>
         
         ${mostLikedType ? `
           <div class="favorite-type">
